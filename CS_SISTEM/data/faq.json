@@ -1,0 +1,26 @@
+[
+  {
+    "id": "faq-01",
+    "kategori": "layanan_dan_paket",
+    "pertanyaan": "Apa saja jenis website yang bisa dibuat dan berapa harganya?",
+    "jawaban": "Kami melayani pembuatan 3 jenis website: 1) Landing page promo (mulai Rp500.000), 2) Company Profile perusahaan (mulai Rp1.500.000), dan 3) Toko Online/Katalog produk (mulai Rp2.500.000). Semua paket sudah termasuk domain dan hosting 1 tahun."
+  },
+  {
+    "id": "faq-02",
+    "kategori": "estimasi_waktu",
+    "pertanyaan": "Berapa lama proses pengerjaan pembuatan website?",
+    "jawaban": "Waktu pengerjaan bergantung pada paket: Landing Page sekitar 2-4 hari kerja, Company Profile 5-7 hari kerja, dan Toko Online sekitar 10-14 hari kerja setelah data materi kami terima lengkap."
+  },
+  {
+    "id": "faq-03",
+    "kategori": "alur_pemesanan",
+    "pertanyaan": "Bagaimana alur dan syarat pemesanan website?",
+    "jawaban": "Alur pemesanan: 1) Konsultasi kebutuhan dan pilih paket, 2) Pembayaran DP 50%, 3) Pengiriman materi teks/foto dari klien, 4) Proses pengembangan dan revisi (maksimal 2x revisi minor), 5) Pelunasan sisa 50% dan website online secara penuh."
+  },
+  {
+    "id": "faq-04",
+    "kategori": "kontak_eskalasi",
+    "pertanyaan": "Bagaimana jika saya ingin konsultasi kebutuhan custom atau bicara dengan tim teknis?",
+    "jawaban": "Untuk konsultasi kebutuhan khusus atau fitur custom, Anda dapat langsung menghubungi WhatsApp tim teknis kami di nomor 0812-3456-7890 (Senin - Sabtu, 09.00 - 17.00 WIB)."
+  }
+]

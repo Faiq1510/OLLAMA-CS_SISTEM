@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CS Chatbot - Jasa Website</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brandDark: "#080E0C",
+              brandCard: "#0F1C18",
+              brandGreen: "#10B981",
+              brandGreenDark: "#047857",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #1f3830;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-neutral-950 text-neutral-100 flex items-center justify-center min-h-screen p-4 font-sans"
+  >
+    <!-- Container Mockup Ponsel / Card Chat -->
+    <div
+      class="w-full max-w-md h-[680px] bg-brandDark border border-emerald-900/40 rounded-3xl shadow-2xl flex flex-col overflow-hidden relative"
+    >
+      <!-- Ambient Glow Effect di background -->
+      <div
+        class="absolute -top-24 -left-24 w-56 h-56 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"
+      ></div>
+      <div
+        class="absolute -bottom-24 -right-24 w-56 h-56 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"
+      ></div>
+
+      <!-- Header Chat -->
+      <div
+        class="p-4 bg-brandCard/80 backdrop-blur border-b border-emerald-900/30 flex items-center justify-between z-10"
+      >
+        <div class="flex items-center space-x-3">
+          <div class="relative">
+            <div
+              class="w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 font-bold text-lg"
+            >
+              ⚡
+            </div>
+            <span
+              class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-400 rounded-full ring-2 ring-brandDark"
+            ></span>
+          </div>
+          <div>
+            <h2 class="font-semibold text-sm text-neutral-100">CS WebStudio</h2>
+            <p class="text-xs text-emerald-400 font-medium">
+              Online (Qwen 2.5 AI)
+            </p>
+          </div>
+        </div>
+        <span
+          class="text-xs bg-emerald-950/60 text-emerald-300 border border-emerald-800/50 px-2.5 py-1 rounded-full"
+        >
+          v1.0
+        </span>
+      </div>
+
+      <!-- Area Pesan (Scrollable) -->
+      <div
+        id="chatBox"
+        class="flex-1 overflow-y-auto p-4 space-y-4 z-10 text-sm"
+      >
+        <!-- Pesan Sambutan dari Bot -->
+        <div class="flex items-start space-x-2">
+          <div
+            class="w-7 h-7 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xs shrink-0"
+          >
+            🤖
+          </div>
+          <div
+            class="bg-brandCard border border-emerald-900/40 rounded-2xl rounded-tl-none p-3.5 text-neutral-200 max-w-[80%] leading-relaxed shadow-sm"
+          >
+            Halo! Selamat datang di Layanan Pembuatan Website. Ada yang bisa
+            saya bantu terkait paket, estimasi waktu, atau alur pemesanan?
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Suggestion Chips -->
+      <div
+        class="px-4 py-2 border-t border-emerald-900/20 bg-brandDark/50 z-10 flex gap-2 overflow-x-auto no-scrollbar"
+      >
+        <button
+          onclick="sendQuick('Berapa harga landing page?')"
+          class="whitespace-nowrap text-xs bg-emerald-950/40 hover:bg-emerald-900/50 text-emerald-300 border border-emerald-800/40 px-3 py-1.5 rounded-full transition"
+        >
+          💰 Harga Landing Page
+        </button>
+        <button
+          onclick="sendQuick('Berapa lama proses pembuatan?')"
+          class="whitespace-nowrap text-xs bg-emerald-950/40 hover:bg-emerald-900/50 text-emerald-300 border border-emerald-800/40 px-3 py-1.5 rounded-full transition"
+        >
+          ⏱️ Lama Pengerjaan
+        </button>
+        <button
+          onclick="sendQuick('Bagaimana alur pemesanan website?')"
+          class="whitespace-nowrap text-xs bg-emerald-950/40 hover:bg-emerald-900/50 text-emerald-300 border border-emerald-800/40 px-3 py-1.5 rounded-full transition"
+        >
+          📋 Alur Pemesanan
+        </button>
+      </div>
+
+      <!-- Input Box -->
+      <div
+        class="p-3 bg-brandCard/90 backdrop-blur border-t border-emerald-900/30 z-10"
+      >
+        <form
+          id="chatForm"
+          onsubmit="handleSend(event)"
+          class="flex items-center space-x-2"
+        >
+          <input
+            id="messageInput"
+            type="text"
+            placeholder="Ketik pertanyaan Anda..."
+            autocomplete="off"
+            class="flex-1 bg-neutral-900/90 text-neutral-100 placeholder-neutral-500 text-sm px-4 py-3 rounded-full border border-emerald-900/40 focus:outline-none focus:border-emerald-500 transition"
+          />
+          <button
+            id="sendBtn"
+            type="submit"
+            class="w-11 h-11 bg-emerald-500 hover:bg-emerald-400 text-neutral-950 rounded-full flex items-center justify-center font-bold transition shadow-lg shadow-emerald-500/20 shrink-0"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"
+              />
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Script Logika Frontend -->
+    <script>
+      const chatBox = document.getElementById("chatBox");
+      const messageInput = document.getElementById("messageInput");
+      const sendBtn = document.getElementById("sendBtn");
+
+      function scrollToBottom() {
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }
+
+      function appendUserMessage(text) {
+        const msgHtml = `
+        <div class="flex items-end justify-end space-x-2">
+          <div class="bg-emerald-600 text-white rounded-2xl rounded-br-none p-3.5 max-w-[80%] leading-relaxed shadow-sm">
+            ${escapeHtml(text)}
+          </div>
+        </div>
+      `;
+        chatBox.insertAdjacentHTML("beforeend", msgHtml);
+        scrollToBottom();
+      }
+
+      function appendBotMessage(text) {
+        const msgHtml = `
+        <div class="flex items-start space-x-2">
+          <div class="w-7 h-7 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xs shrink-0">
+            🤖
+          </div>
+          <div class="bg-brandCard border border-emerald-900/40 rounded-2xl rounded-tl-none p-3.5 text-neutral-200 max-w-[80%] leading-relaxed shadow-sm">
+            ${escapeHtml(text)}
+          </div>
+        </div>
+      `;
+        chatBox.insertAdjacentHTML("beforeend", msgHtml);
+        scrollToBottom();
+      }
+
+      function appendLoading() {
+        const loadingId = "loading-" + Date.now();
+        const loadingHtml = `
+        <div id="${loadingId}" class="flex items-start space-x-2">
+          <div class="w-7 h-7 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-xs shrink-0">
+            🤖
+          </div>
+          <div class="bg-brandCard border border-emerald-900/40 rounded-2xl rounded-tl-none p-3.5 text-neutral-400 max-w-[80%] flex items-center space-x-1">
+            <span class="w-2 h-2 bg-emerald-400 rounded-full animate-bounce"></span>
+            <span class="w-2 h-2 bg-emerald-400 rounded-full animate-bounce [animation-delay:0.2s]"></span>
+            <span class="w-2 h-2 bg-emerald-400 rounded-full animate-bounce [animation-delay:0.4s]"></span>
+          </div>
+        </div>
+      `;
+        chatBox.insertAdjacentHTML("beforeend", loadingHtml);
+        scrollToBottom();
+        return loadingId;
+      }
+
+      function removeElement(id) {
+        const el = document.getElementById(id);
+        if (el) el.remove();
+      }
+
+      function escapeHtml(text) {
+        const div = document.createElement("div");
+        div.innerText = text;
+        return div.innerHTML;
+      }
+
+      async function handleSend(e) {
+        if (e) e.preventDefault();
+        const text = messageInput.value.trim();
+        if (!text) return;
+
+        appendUserMessage(text);
+        messageInput.value = "";
+        messageInput.disabled = true;
+        sendBtn.disabled = true;
+
+        const loadingId = appendLoading();
+
+        try {
+          const res = await fetch("/api/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: text }),
+          });
+
+          const data = await res.json();
+          removeElement(loadingId);
+
+          if (res.ok && data.answer) {
+            appendBotMessage(data.answer);
+          } else {
+            appendBotMessage(
+              data.error || "Terjadi kesalahan saat memproses jawaban.",
+            );
+          }
+        } catch (err) {
+          removeElement(loadingId);
+          appendBotMessage("Gagal terhubung ke server. Pastikan server aktif.");
+        } finally {
+          messageInput.disabled = false;
+          sendBtn.disabled = false;
+          messageInput.focus();
+        }
+      }
+
+      function sendQuick(text) {
+        messageInput.value = text;
+        handleSend();
+      }
+    </script>
+  </body>
+</html>
