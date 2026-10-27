@@ -2,8 +2,8 @@
 const path = require("path");
 require("dotenv").config({ path: path.join(__dirname, "..", ".env") });
 const express = require("express");
-const { getSystemPrompt } = require("./services/faqService");
-const { chat } = require("./services/ollamaService");
+const { getSystemPrompt } = require("./services/faqService.js");
+const { chat } = require("./services/ollamaservice.js");
 
 const app = express();
 app.use(express.json());

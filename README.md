@@ -39,11 +39,15 @@ D:\BELAJAR\PROJEK\
 ## 🚀 Panduan Menjalankan Sistem
 
 ### 1. Pastikan Ollama Berjalan
-Pastikan aplikasi **Ollama** aktif di komputer Anda dan model telah tersedia:
+Pastikan aplikasi **Ollama** aktif di komputer Anda dan model telah tersedia. Jika
+model belum pernah diunduh, jalankan:
 ```bash
-ollama run qwen2.5:3b
+ollama pull qwen2.5:3b
 ```
-Endpoint default Ollama berjalan pada: `http://localhost:11434`.
+Pastikan layanan Ollama kemudian berjalan pada endpoint default:
+`http://localhost:11434`. Perintah `ollama serve` dapat digunakan jika layanan
+belum otomatis berjalan. Tidak perlu membiarkan `ollama run` tetap terbuka;
+backend memanggil API Ollama secara langsung.
 
 ---
 
@@ -52,6 +56,7 @@ Buka terminal baru di folder backend:
 ```bash
 cd D:\BELAJAR\PROJEK\CS_SISTEM
 npm install
+copy .env.example .env
 node src/server.js
 ```
 *Server API backend akan aktif di: `http://localhost:3000`.*
@@ -65,7 +70,7 @@ cd D:\BELAJAR\PROJEK\CS_WIDGET
 npm install
 npm run dev
 ```
-*Frontend akan aktif di: `http://localhost:5173` (atau port aktif berikutnya).*
+*Frontend akan aktif di: `http://localhost:5174` (atau port aktif berikutnya).*
 
 ---
 
