@@ -1,82 +1,36 @@
-# Sistem Customer Service AI (WebStudio Support)
+# Panduan Inisiasi Model Ollama & Konfigurasi API Lokal
 
-Sistem Customer Service interaktif berbasis AI lokal (**Ollama**) dengan arsitektur REST API **Node.js** dan frontend modern **Vite + Tailwind CSS v4**.
-
-Sistem ini dirancang khusus untuk mematuhi instruksi Project Manager (PM):
-- **AI Engine**: Ollama lokal dengan model ringan (`qwen2.5:3b`) sesuai spesifikasi laptop (hemat VRAM).
-- **Backend API**: Node.js + Express (tanpa Laravel).
-- **Knowledge Base**: Berkas JSON lokal (`data/faq.json`), tanpa ketergantungan PostgreSQL/database SQL.
-- **Frontend Widget**: Tampilan desktop modern bergaya *Orbita AI Onboarding* dengan Suggestion Cards interaktif dan transisi mulus ke gelembung chat.
+Dokumen ini memuat alur langkah demi langkah mulai dari persiapan model AI di Ollama lokal hingga konfigurasinya pada REST API Node.js.
 
 ---
 
-## 🏗️ Arsitektur Folder
+## 1. Inisiasi Model di Ollama Lokal
 
+### Langkah 1.1: Pastikan Layanan Ollama Aktif
+Pastikan aplikasi Ollama sudah terpasang dan berjalan di komputer. Secara default, Ollama membuka port lokal:
 ```text
-D:\BELAJAR\PROJEK\
-├── CS_SISTEM/              # Backend REST API (Node.js + Express)
-│   ├── data/
-│   │   └── faq.json        # Knowledge base FAQ & paket layanan
-│   ├── src/
-│   │   ├── server.js       # Express server & endpoint POST /api/chat
-│   │   └── services/
-│   │       ├── faqservice.js    # Modul pembaca JSON & builder system prompt
-│   │       └── ollamaservice.js # Modul integrasi ke Ollama API lokal
-│   ├── .env                # Port & model configuration
-│   └── package.json
-│
-└── CS_WIDGET/              # Frontend User Interface (Vite + Tailwind CSS)
-    ├── index.html          # Layout onboarding & chat state
-    ├── src/
-    │   ├── main.js         # Logika transisi, autosize input, & fetch API
-    │   └── style.css       # Tailwind v4 import & custom smooth keyframes
-    ├── vite.config.js      # Konfigurasi proxy /api -> port 3000
-    └── package.json
+http://localhost:11434
 ```
-
----
-
-## 🚀 Panduan Menjalankan Sistem
-
-### 1. Pastikan Ollama Berjalan
-Pastikan aplikasi **Ollama** aktif di komputer Anda dan model telah tersedia. Jika
-model belum pernah diunduh, jalankan:
+Untuk memverifikasi bahwa layanan aktif, buka terminal atau browser:
 ```bash
-ollama pull qwen2.5:3b
+curl http://localhost:11434
 ```
-Pastikan layanan Ollama kemudian berjalan pada endpoint default:
-`http://localhost:11434`. Perintah `ollama serve` dapat digunakan jika layanan
-belum otomatis berjalan. Tidak perlu membiarkan `ollama run` tetap terbuka;
-backend memanggil API Ollama secara langsung.
+*Respons sukses:* `Ollama is running`.
 
----
-
-### 2. Jalankan Backend (`CS_SISTEM`)
-Buka terminal baru di folder backend:
+### Langkah 1.2: Unduh dan Jalankan Model Ringan (`qwen2.5:3b`)
+Jalankan perintah berikut di terminal untuk mengunduh (*pull*) dan menginisialisasi model:
 ```bash
-cd D:\BELAJAR\PROJEK\CS_SISTEM
-npm install
-copy .env.example .env
-node src/server.js
+ollama run qwen2.5:3b
 ```
-*Server API backend akan aktif di: `http://localhost:3000`.*
+- Model `qwen2.5:3b` berukuran ~1.9 GB VRAM, sesuai untuk spesifikasi laptop standar.
+- Setelah proses unduhan selesai, model siap menerima panggilan API.
 
 ---
 
-### 3. Jalankan Frontend (`CS_WIDGET`)
-Buka terminal kedua di folder frontend:
-```bash
-cd D:\BELAJAR\PROJEK\CS_WIDGET
-npm install
-npm run dev
-```
-*Frontend akan aktif di: `http://localhost:5174` (atau port aktif berikutnya).*
+## 2. Konfigurasi Environment Backend (`.env`)
 
----
+Pada folder `CS_SISTEM`, buat atau sesuaikan berkas `.env` agar mengarah ke host dan model lokal tersebut:
 
-## ⚙️ Konfigurasi Environment (`.env`)
-
-Pada folder `CS_SISTEM/.env`:
 ```env
 PORT=3000
 OLLAMA_HOST=http://localhost:11434
@@ -85,7 +39,54 @@ DEFAULT_MODEL=qwen2.5:3b
 
 ---
 
-## 🛡️ Anti-Halusinasi & Knowledge Base
+## 3. Konfigurasi Pemanggilan API Ollama di Node.js
 
-Sistem CS tidak akan mengarang jawaban di luar data yang tertulis di `data/faq.json`. 
-Jika pengunjung menanyakan hal di luar konteks layanan pembuatan website WebStudio, bot akan menolak secara sopan dan mengarahkan kontak langsung ke tim representatif melalui WhatsApp resmi.
+Pemanggilan model lokal dilakukan melalui endpoint bawaan Ollama `POST /api/chat`.
+
+### Implementasi pada `src/services/ollamaservice.js`:
+```javascript
+async function chat(messages) {
+  const ollamaHost = process.env.OLLAMA_HOST || "http://localhost:11434";
+  const modelName = process.env.DEFAULT_MODEL || "qwen2.5:3b";
+
+  const response = await fetch(`${ollamaHost}/api/chat`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      model: modelName,
+      messages: messages,
+      stream: false,
+      options: {
+        temperature: 0.1, // Nilai rendah agar jawaban konsisten dan tidak berhalusinasi
+      },
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Ollama error: ${response.status} ${response.statusText}`);
+  }
+
+  const data = await response.json();
+  return data.message.content;
+}
+
+module.exports = { chat };
+```
+
+---
+
+## 4. Pengujian Koneksi API
+
+Jalankan server backend:
+```bash
+cd D:\BELAJAR\PROJEK\CS_SISTEM
+node src/server.js
+```
+
+Kirim pengujian request menggunakan curl atau REST client:
+```bash
+curl -X POST http://localhost:3000/api/chat \
+  -H "Content-Type: application/json" \
+  -d '{"message": "Halo, apa saja layanan yang tersedia?"}'
+```
+*Respons:* API akan mengembalikan jawaban berbasis data FAQ dari model `qwen2.5:3b` lokal.
