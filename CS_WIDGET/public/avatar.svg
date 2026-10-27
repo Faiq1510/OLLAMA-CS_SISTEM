@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <!-- Background Circle Gradient -->
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="50%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FED7AA"/>
+      <stop offset="100%" stop-color="#FDBA74"/>
+    </linearGradient>
+    <linearGradient id="hairGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="120" height="120" rx="60" fill="url(#bgGrad)"/>
+
+  <!-- Body / Shoulders -->
+  <path d="M26 120C26 98 42 86 60 86C78 86 94 98 94 120H26Z" fill="#F8FAFC"/>
+  <!-- Collar / Tie accent -->
+  <path d="M50 86L60 98L70 86H50Z" fill="#E2E8F0"/>
+  <path d="M57 98L60 114L63 98H57Z" fill="#3B82F6"/>
+
+  <!-- Head / Face -->
+  <rect x="38" y="32" width="44" height="52" rx="22" fill="url(#skinGrad)"/>
+
+  <!-- Hair Back/Base -->
+  <path d="M36 44C36 28 47 18 60 18C73 18 84 28 84 44C84 48 83 55 83 55C83 55 78 36 60 36C42 36 37 55 37 55C37 55 36 48 36 44Z" fill="url(#hairGrad)"/>
+
+  <!-- Eyes -->
+  <ellipse cx="49" cy="54" rx="3.5" ry="4" fill="#0F172A"/>
+  <ellipse cx="71" cy="54" rx="3.5" ry="4" fill="#0F172A"/>
+  <circle cx="50" cy="52.5" r="1.2" fill="#FFFFFF"/>
+  <circle cx="72" cy="52.5" r="1.2" fill="#FFFFFF"/>
+
+  <!-- Smile -->
+  <path d="M52 65C52 65 56 70 60 70C64 70 68 65 68 65" stroke="#EA580C" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Cheeks Blush -->
+  <circle cx="43" cy="62" r="3.5" fill="#FB7185" opacity="0.45"/>
+  <circle cx="77" cy="62" r="3.5" fill="#FB7185" opacity="0.45"/>
+
+  <!-- CS Headset -->
+  <!-- Band -->
+  <path d="M34 50C34 32 45 22 60 22C75 22 86 32 86 50" stroke="#0F172A" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+  <!-- Left Earpad -->
+  <rect x="30" y="44" width="7" height="15" rx="3.5" fill="#0F172A"/>
+  <rect x="31" y="46" width="5" height="11" rx="2.5" fill="#3B82F6"/>
+  <!-- Right Earpad -->
+  <rect x="83" y="44" width="7" height="15" rx="3.5" fill="#0F172A"/>
+  <rect x="84" y="46" width="5" height="11" rx="2.5" fill="#3B82F6"/>
+  <!-- Microphone Boom -->
+  <path d="M33 54C33 68 45 74 54 74" stroke="#0F172A" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <!-- Microphone Tip -->
+  <circle cx="56" cy="74" r="3" fill="#3B82F6"/>
+</svg>

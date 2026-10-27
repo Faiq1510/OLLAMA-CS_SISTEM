@@ -17,6 +17,9 @@ async function chat(messages) {
       model: modelName,
       messages: messages,
       stream: false,
+      options: {
+        temperature: 0.1, // Nilai rendah agar model disiplin dan tidak halusinasi
+      },
     }),
   });
 

@@ -66,7 +66,9 @@ function escapeHTML(str) {
   return str.replace(
     /[&<>'"]/g,
     (tag) =>
-      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[tag] || tag
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[
+        tag
+      ] || tag,
   );
 }
 
@@ -94,9 +96,7 @@ function appendBotMessage(text) {
   const wrapper = document.createElement("div");
   wrapper.className = "flex items-start gap-3 animate-fade-in";
   wrapper.innerHTML = `
-    <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white text-xs font-bold shrink-0 mt-0.5 shadow-sm">
-      WS
-    </div>
+    <img src="/avatar.svg" alt="Avatar CS" class="w-8 h-8 rounded-full object-cover shrink-0 mt-0.5 shadow-sm ring-1 ring-slate-200" />
     <div class="max-w-[85%] md:max-w-[75%] bg-white border border-slate-200/80 rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm">
       <div class="flex items-center gap-2 mb-1">
         <span class="text-xs font-semibold text-slate-900">WebStudio Support</span>
@@ -115,9 +115,7 @@ function appendTypingIndicator() {
   wrapper.id = id;
   wrapper.className = "flex items-start gap-3 animate-fade-in";
   wrapper.innerHTML = `
-    <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white text-xs font-bold shrink-0 mt-0.5 shadow-sm">
-      WS
-    </div>
+    <img src="/avatar.png" alt="Avatar CS" class="w-8 h-8 rounded-full object-cover shrink-0 mt-0.5 shadow-sm ring-1 ring-slate-200" />
     <div class="bg-white border border-slate-200/80 rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm flex items-center gap-1.5">
       <span class="h-2 w-2 rounded-full bg-slate-400 animate-bounce" style="animation-delay: 0ms"></span>
       <span class="h-2 w-2 rounded-full bg-slate-400 animate-bounce" style="animation-delay: 150ms"></span>
@@ -161,12 +159,14 @@ async function handleSendMessage(userText) {
     if (response.ok && data.answer) {
       appendBotMessage(data.answer);
     } else {
-      appendBotMessage(data.error || "Maaf, terjadi kendala saat memproses permintaan.");
+      appendBotMessage(
+        data.error || "Maaf, terjadi kendala saat memproses permintaan.",
+      );
     }
   } catch (error) {
     removeTypingIndicator(typingId);
     appendBotMessage(
-      "Gagal terhubung ke server backend (port 3000). Pastikan backend Anda sedang berjalan!"
+      "Gagal terhubung ke server backend (port 3000). Pastikan backend Anda sedang berjalan!",
     );
   } finally {
     sendBtn.disabled = false;
