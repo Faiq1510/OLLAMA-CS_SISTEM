@@ -1,9 +1,119 @@
 @import "tailwindcss";
 
-#heroState, #heroState * {
-  outline: none;
+/* ── 1. Subtle background dot grid pattern for depth ── */
+.bg-canvas-pattern {
+  background-color: #fbfcfe;
+  background-image: radial-gradient(#e2e8f0 0.85px, transparent 0.85px);
+  background-size: 24px 24px;
 }
 
+/* ── 2. Floating animation for central AI mascot & shadow ── */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes float-shadow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.85;
+    filter: blur(3px);
+  }
+  50% {
+    transform: scale(0.72);
+    opacity: 0.4;
+    filter: blur(5px);
+  }
+}
+
+.animate-float-shadow {
+  animation: float-shadow 3.5s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* ── 3. Spring bottom-to-top pop-up keyframes ── */
+@keyframes popUpBottomToTop {
+  0% {
+    opacity: 0;
+    transform: translateY(32px) scale(0.96);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.015);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── 4. Card bounce pop animation ── */
+@keyframes cardPopRipple {
+  0% {
+    transform: scale(0.97);
+  }
+  45% {
+    transform: scale(1.035) translateY(-3px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ── 5. Mascot bouncy wave when triggered ── */
+@keyframes mascotNod {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.05) translateY(-8px) rotate(-1.5deg);
+  }
+  60% {
+    transform: scale(0.98) translateY(2px) rotate(1.2deg);
+  }
+}
+
+/* ── 6. Bottom-to-top staggered animated items ── */
+.pop-stagger-item {
+  will-change: transform, opacity;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.animate-stagger-active {
+  animation: popUpBottomToTop 0.62s cubic-bezier(0.34, 1.45, 0.64, 1) both;
+}
+
+/* Staggered bottom-to-top delays:
+   1. Bottom chat input (40ms)
+   2. Service cards from right to left (130ms, 200ms, 270ms)
+   3. Greeting header text (350ms)
+   4. Mascot at the top (430ms)
+*/
+.delay-b2t-input { animation-delay: 40ms; }
+.delay-b2t-card3 { animation-delay: 130ms; }
+.delay-b2t-card2 { animation-delay: 200ms; }
+.delay-b2t-card1 { animation-delay: 270ms; }
+.delay-b2t-greeting { animation-delay: 350ms; }
+.delay-b2t-mascot { animation-delay: 430ms; }
+
+.card-clicked-bounce {
+  animation: cardPopRipple 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both !important;
+}
+
+.mascot-react {
+  animation: mascotNod 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both !important;
+}
+
+/* Standard fade-in for chat state */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -15,44 +125,18 @@
   }
 }
 
-/* Animasi Pop-Up Ultra Smooth tanpa artefak garis kotak */
-@keyframes popUpSmooth {
-  0% {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-popup-smooth {
-  animation: popUpSmooth 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
-  outline: none !important;
-  border: none !important;
-  box-shadow: none !important;
-  -webkit-tap-highlight-color: transparent;
-}
-
 .animate-fade-in {
   animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #E2E8F0;
-  border-radius: 9999px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #CBD5E1;
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-float-shadow,
+  .animate-stagger-active,
+  .card-clicked-bounce,
+  .mascot-react {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
 }

@@ -3,6 +3,12 @@ import "./style.css";
 // ── 1. ELEMEN DOM ──────────────────────────────────────────
 const exitBtn = document.getElementById("exitBtn");
 const newChatBtn = document.getElementById("newChatBtn");
+const replayStaggerBtn = document.getElementById("replayStaggerBtn");
+const headerBrandTrigger = document.getElementById("headerBrandTrigger");
+const mascotElement = document.getElementById("mascotElement");
+const mascotFloatInner = document.getElementById("mascotFloatInner");
+const waveHand = document.getElementById("waveHand");
+
 const heroState = document.getElementById("heroState");
 const chatState = document.getElementById("chatState");
 const chatScroll = document.getElementById("chatScroll");
@@ -13,7 +19,49 @@ const sendBtn = document.getElementById("sendBtn");
 
 let isChatActive = false;
 
-// ── 2. LOGIKA TRANSISI HERO KE CHAT ────────────────────────
+// ── 2. LOGIKA REPLAY ANIMASI STAGGER (STITCH FEATURE) ──────
+function triggerStaggerAnimation() {
+  if (isChatActive) {
+    resetToHeroState();
+  }
+
+  const items = document.querySelectorAll(".pop-stagger-item");
+  items.forEach((item) => {
+    item.classList.remove("animate-stagger-active");
+  });
+
+  // Force reflow agar browser me-restart animasi
+  void document.body.offsetHeight;
+
+  items.forEach((item) => {
+    item.classList.add("animate-stagger-active");
+  });
+}
+
+if (replayStaggerBtn) {
+  replayStaggerBtn.addEventListener("click", triggerStaggerAnimation);
+}
+
+if (headerBrandTrigger) {
+  headerBrandTrigger.addEventListener("click", triggerStaggerAnimation);
+}
+
+// ── 3. INTERAKSI MASKOT ROBOT (KLIK UNTUK RESPON HANGAT) ───
+if (mascotElement) {
+  mascotElement.addEventListener("click", () => {
+    if (mascotFloatInner) {
+      mascotFloatInner.classList.remove("mascot-react");
+      void mascotFloatInner.offsetWidth;
+      mascotFloatInner.classList.add("mascot-react");
+    }
+    if (waveHand) {
+      waveHand.classList.add("scale-125");
+      setTimeout(() => waveHand.classList.remove("scale-125"), 600);
+    }
+  });
+}
+
+// ── 4. LOGIKA TRANSISI HERO KE CHAT ────────────────────────
 function switchToChatState() {
   if (!isChatActive) {
     heroState.classList.add("hidden");
@@ -27,9 +75,11 @@ function resetToHeroState() {
   messagesList.innerHTML = "";
   chatState.classList.add("hidden");
   heroState.classList.remove("hidden");
+  if (newChatBtn) newChatBtn.classList.add("hidden");
   isChatActive = false;
   messageInput.value = "";
   messageInput.style.height = "auto";
+  triggerStaggerAnimation();
 }
 
 if (newChatBtn) {
@@ -48,7 +98,7 @@ if (exitBtn) {
   });
 }
 
-// ── 3. HELPER CHAT ─────────────────────────────────────────
+// ── 5. HELPER CHAT ─────────────────────────────────────────
 function scrollToBottom() {
   setTimeout(() => {
     chatScroll.scrollTop = chatScroll.scrollHeight;
@@ -66,13 +116,11 @@ function escapeHTML(str) {
   return str.replace(
     /[&<>'"]/g,
     (tag) =>
-      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[
-        tag
-      ] || tag,
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[tag] || tag
   );
 }
 
-// ── 4. RENDER BUBBLE CHAT ──────────────────────────────────
+// ── 6. RENDER BUBBLE CHAT ──────────────────────────────────
 function appendUserMessage(text) {
   switchToChatState();
   const time = getCurrentTime();
@@ -96,7 +144,7 @@ function appendBotMessage(text) {
   const wrapper = document.createElement("div");
   wrapper.className = "flex items-start gap-3 animate-fade-in";
   wrapper.innerHTML = `
-    <img src="/avatar.svg" alt="Avatar CS" class="w-8 h-8 rounded-full object-cover shrink-0 mt-0.5 shadow-sm ring-1 ring-slate-200" />
+    <img src="/avatar.png" alt="Avatar Robot 3D" class="w-8 h-8 rounded-full object-cover shrink-0 mt-0.5 shadow-xs border border-slate-200" />
     <div class="max-w-[85%] md:max-w-[75%] bg-white border border-slate-200/80 rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm">
       <div class="flex items-center gap-2 mb-1">
         <span class="text-xs font-semibold text-slate-900">WebStudio Support</span>
@@ -115,7 +163,7 @@ function appendTypingIndicator() {
   wrapper.id = id;
   wrapper.className = "flex items-start gap-3 animate-fade-in";
   wrapper.innerHTML = `
-    <img src="/avatar.png" alt="Avatar CS" class="w-8 h-8 rounded-full object-cover shrink-0 mt-0.5 shadow-sm ring-1 ring-slate-200" />
+    <img src="/avatar.png" alt="Avatar Robot 3D" class="w-8 h-8 rounded-full object-cover shrink-0 mt-0.5 shadow-xs border border-slate-200" />
     <div class="bg-white border border-slate-200/80 rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm flex items-center gap-1.5">
       <span class="h-2 w-2 rounded-full bg-slate-400 animate-bounce" style="animation-delay: 0ms"></span>
       <span class="h-2 w-2 rounded-full bg-slate-400 animate-bounce" style="animation-delay: 150ms"></span>
@@ -132,7 +180,7 @@ function removeTypingIndicator(id) {
   if (el) el.remove();
 }
 
-// ── 5. PROSES PENGIRIMAN PESAN KE BACKEND ──────────────────
+// ── 7. PROSES PENGIRIMAN PESAN KE BACKEND ──────────────────
 async function handleSendMessage(userText) {
   const message = userText.trim();
   if (!message) return;
@@ -159,14 +207,12 @@ async function handleSendMessage(userText) {
     if (response.ok && data.answer) {
       appendBotMessage(data.answer);
     } else {
-      appendBotMessage(
-        data.error || "Maaf, terjadi kendala saat memproses permintaan.",
-      );
+      appendBotMessage(data.error || "Maaf, terjadi kendala saat memproses permintaan.");
     }
   } catch (error) {
     removeTypingIndicator(typingId);
     appendBotMessage(
-      "Gagal terhubung ke server backend (port 3000). Pastikan backend Anda sedang berjalan!",
+      "Gagal terhubung ke server backend (port 3000). Pastikan backend Anda sedang berjalan!"
     );
   } finally {
     sendBtn.disabled = false;
@@ -175,7 +221,7 @@ async function handleSendMessage(userText) {
   }
 }
 
-// ── 6. EVENT LISTENERS ──────────────────────────────────────
+// ── 8. EVENT LISTENERS ──────────────────────────────────────
 
 // Form submit
 chatForm.addEventListener("submit", (e) => {
@@ -196,18 +242,27 @@ messageInput.addEventListener("input", () => {
   messageInput.style.height = `${Math.min(messageInput.scrollHeight, 120)}px`;
 });
 
-// Klik Suggestion Cards (Kotak besar tengah)
+// Klik Suggestion Cards (dengan Ripple Bounce & Respon Robot sebelum kirim)
 document.querySelectorAll(".suggestion-card").forEach((card) => {
   card.addEventListener("click", () => {
-    const prompt = card.getAttribute("data-prompt");
-    if (prompt) handleSendMessage(prompt);
-  });
-});
+    // 1. Efek Card Bounce
+    card.classList.remove("card-clicked-bounce");
+    void card.offsetWidth;
+    card.classList.add("card-clicked-bounce");
 
-// Klik Action Chips (Pill tombol bulat kecil)
-document.querySelectorAll(".chip-action").forEach((chip) => {
-  chip.addEventListener("click", () => {
-    const prompt = chip.getAttribute("data-prompt");
-    if (prompt) handleSendMessage(prompt);
+    // 2. Robot mengangguk ramah
+    if (mascotFloatInner) {
+      mascotFloatInner.classList.remove("mascot-react");
+      void mascotFloatInner.offsetWidth;
+      mascotFloatInner.classList.add("mascot-react");
+    }
+
+    // 3. Kirim pesan prompt
+    const prompt = card.getAttribute("data-prompt");
+    if (prompt) {
+      setTimeout(() => {
+        handleSendMessage(prompt);
+      }, 250);
+    }
   });
 });
