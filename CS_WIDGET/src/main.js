@@ -17,6 +17,8 @@ const chatForm = document.getElementById("chatForm");
 const messageInput = document.getElementById("messageInput");
 const sendBtn = document.getElementById("sendBtn");
 
+let currentSessionId = null;
+
 let isChatActive = false;
 
 // ── 2. LOGIKA REPLAY ANIMASI STAGGER (STITCH FEATURE) ──────
@@ -77,6 +79,7 @@ function resetToHeroState() {
   heroState.classList.remove("hidden");
   if (newChatBtn) newChatBtn.classList.add("hidden");
   isChatActive = false;
+  currentSessionId = null; // <-- Reset sesi percakapan
   messageInput.value = "";
   messageInput.style.height = "auto";
   triggerStaggerAnimation();
@@ -116,7 +119,9 @@ function escapeHTML(str) {
   return str.replace(
     /[&<>'"]/g,
     (tag) =>
-      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[tag] || tag
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[
+        tag
+      ] || tag,
   );
 }
 
@@ -198,21 +203,21 @@ async function handleSendMessage(userText) {
     const response = await fetch("/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: message }),
+      body: JSON.stringify({
+        message: message,
+        sessionId: currentSessionId, // <-- Kirim sessionId aktif
+      }),
     });
-
     const data = await response.json();
     removeTypingIndicator(typingId);
-
     if (response.ok && data.answer) {
+      currentSessionId = data.sessionId; // <-- Simpan sessionId dari server
       appendBotMessage(data.answer);
-    } else {
-      appendBotMessage(data.error || "Maaf, terjadi kendala saat memproses permintaan.");
     }
   } catch (error) {
     removeTypingIndicator(typingId);
     appendBotMessage(
-      "Gagal terhubung ke server backend (port 3000). Pastikan backend Anda sedang berjalan!"
+      "Gagal terhubung ke server backend (port 3000). Pastikan backend Anda sedang berjalan!",
     );
   } finally {
     sendBtn.disabled = false;
