@@ -13,7 +13,6 @@ const app = express();
 
 // Middleware parsing JSON
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "..", "public")));
 
 // ─── Definisi Rute (Diarahkan langsung ke Controller) ───
 app.post("/api/chat", chatLimiter, handleChat);
