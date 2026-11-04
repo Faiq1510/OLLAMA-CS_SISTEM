@@ -24,3 +24,5 @@ app.listen(PORT, () => {
   console.log(`   Model AI : ${process.env.DEFAULT_MODEL}`);
   console.log(`   Ollama   : ${process.env.OLLAMA_HOST}`);
 });
+
+module.exports = app;
