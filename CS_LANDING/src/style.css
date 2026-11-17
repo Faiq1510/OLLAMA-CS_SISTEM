@@ -1,0 +1,570 @@
+@import "tailwindcss";
+
+/* ── Custom Utilities & Font ── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family:
+      "Plus Jakarta Sans",
+      system-ui,
+      -apple-system,
+      sans-serif;
+  }
+}
+
+.bg-canvas-dots {
+  background-color: #f2f2f1;
+  background-image: radial-gradient(
+    rgba(180, 160, 140, 0.25) 1.2px,
+    transparent 1.2px
+  );
+  background-size: 28px 28px;
+}
+
+/* ── Custom Glassmorphism ── */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ── Ripple & Click Ring Animation ala Stitch ── */
+/* ── Wireframe Blueprint State ── */
+.wire-box {
+  border: 1.5px dashed rgba(217, 119, 6, 0.45);
+  background: rgba(254, 243, 199, 0.15);
+  opacity: 0.25;
+  filter: grayscale(80%);
+  transform: translateY(4px);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Active Drawing State (Kursor sedang menggambar) ── */
+.wire-box.is-drawing {
+  opacity: 0.75;
+  border-color: #d97706;
+  background: rgba(254, 243, 199, 0.3);
+  box-shadow: 0 0 16px rgba(217, 119, 6, 0.15);
+  filter: grayscale(0%);
+}
+
+/* ── Glassmorphism Transformed State (Hasil Akhir Kaca) ── */
+.wire-box.is-glass {
+  opacity: 1;
+  filter: none;
+  transform: translateY(0);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    0 10px 30px -5px rgba(120, 53, 15, 0.06),
+    0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+}
+
+/* ── Shimmer Flash saat Kawat berubah jadi Kaca ── */
+@keyframes glass-flash {
+  0% {
+    box-shadow: 0 0 0 0 rgba(217, 119, 6, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 25px 4px rgba(255, 255, 255, 0.9);
+  }
+  100% {
+    box-shadow: 0 10px 30px -5px rgba(120, 53, 15, 0.06);
+  }
+}
+
+.wire-box.glass-flash {
+  animation: glass-flash 0.6s ease-out;
+}
+
+/* ── Ripple & Click Ring Animation ── */
+@keyframes stitch-click {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+.stitch-click-active {
+  animation: stitch-click 0.5s cubic-bezier(0, 0, 0.2, 1) forwards;
+}
+
+@keyframes stitch-ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(3.5);
+    opacity: 0;
+  }
+}
+
+.stitch-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(217, 119, 6, 0.25);
+  transform: scale(0);
+  animation: stitch-ripple 0.6s linear;
+  pointer-events: none;
+}
+
+.liquid-glass {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(255, 255, 255, 0.12) 100%
+  ) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.65) !important;
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.04),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.85),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* ── Modular Slot: State Terpasang (Snapped to Liquid Glass) ── */
+.mod-slot.is-snapped {
+  border-style: solid !important;
+  border-color: rgba(255, 255, 255, 0.9) !important;
+  background: rgba(255, 255, 255, 0.65) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow:
+    0 4px 20px -2px rgba(0, 0, 0, 0.04),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9) !important;
+  transform: translateY(0) scale(1) !important;
+}
+
+/* ── Efek Snap Bounce Saat Komponen Menempel ── */
+@keyframes snap-bounce {
+  0% {
+    transform: scale(0.96);
+    box-shadow: 0 0 0 0 rgba(234, 88, 12, 0.4);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px 4px rgba(255, 255, 255, 0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.mod-slot.snap-flash {
+  animation: snap-bounce 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* ── Infinite Diagonal Serong Animation (Meluncur Konstan Tanpa Henti) ── */
+@keyframes diagonal-slide-up {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes diagonal-slide-down {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+/* ── Single Ribbon Diagonal Conveyor (Kiri Bawah ke Kanan Atas) ── */
+@keyframes diagonal-ribbon-move {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Bergerak sejauh 50% panjang track (seamless loop) */
+    transform: translateX(-50%);
+  }
+}
+
+.diagonal-ribbon-track {
+  display: flex;
+  width: max-content;
+  animation: diagonal-ribbon-move 28s linear infinite;
+  will-change: transform;
+}
+
+/* Kartu Kaca Elegan */
+.dash-card {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+/* ── Stitch Hero 3D Isometric Tilt Showcase ── */
+.stitch-perspective-container {
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+  transform-style: preserve-3d;
+}
+
+.stitch-isometric-rig {
+  transform-style: preserve-3d;
+  /* Tambahkan scale(0.82) agar ukuran rig mengecil proporsional */
+  transform: scale(0.82) rotateY(-22deg) rotateX(20deg) rotateZ(-8deg);
+  animation: float-stitch-rig 7s ease-in-out infinite;
+  transition: transform 0.15s ease-out;
+}
+
+@keyframes float-stitch-rig {
+  0%,
+  100% {
+    transform: scale(0.82) rotateY(-22deg) rotateX(20deg) rotateZ(-8deg)
+      translateY(0px);
+  }
+  50% {
+    transform: scale(0.82) rotateY(-21deg) rotateX(19deg) rotateZ(-7.5deg)
+      translateY(-12px);
+  }
+}
+
+/* 3D Parallel Depth Layers (Rapat & Harmonis) */
+.stitch-card-main {
+  transform: translate3d(20px, -10px, 90px);
+  transform-style: preserve-3d;
+}
+
+.stitch-card-secondary {
+  transform: translate3d(-55px, -25px, 20px);
+  transform-style: preserve-3d;
+}
+
+.stitch-card-tertiary {
+  transform: translate3d(-10px, 80px, 45px);
+  transform-style: preserve-3d;
+}
+
+.stitch-badge-pill {
+  transform: translate3d(10px, 160px, 130px);
+  transform-style: preserve-3d;
+}
+
+/* Floor Cast Shadow */
+.stitch-floor-shadow {
+  position: absolute;
+  bottom: 10px;
+  left: 5%;
+  width: 90%;
+  height: 100px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(35, 25, 15, 0.32) 0%,
+    rgba(35, 25, 15, 0.12) 50%,
+    transparent 75%
+  );
+  filter: blur(24px);
+  transform: rotateX(75deg) rotateZ(-8deg);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Crystal Glass Bening (Liquid Glass Card) ── */
+.crystal-glass-card {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.72) 0%,
+    rgba(255, 255, 255, 0.38) 50%,
+    rgba(255, 255, 255, 0.58) 100%
+  );
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  box-shadow:
+    inset 0 1.5px 2px rgba(255, 255, 255, 0.95),
+    inset 0 -1.5px 2px rgba(0, 0, 0, 0.03),
+    0 35px 70px -15px rgba(60, 45, 30, 0.18),
+    0 15px 30px -8px rgba(0, 0, 0, 0.08);
+}
+
+/* Top-edge highlight glash bening */
+.crystal-glass-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.9) 30%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0.9) 70%,
+    transparent
+  );
+  border-radius: 999px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Cast Shadow Pekat di Lantai Cream */
+.floor-cast-shadow {
+  position: absolute;
+  bottom: -35px;
+  left: 5%;
+  width: 90%;
+  height: 95px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(55, 35, 20, 0.28) 0%,
+    rgba(55, 35, 20, 0.12) 48%,
+    transparent 72%
+  );
+  filter: blur(22px);
+  transform: rotateX(75deg) rotateZ(-10deg);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Partikel Melayang Halus */
+@keyframes particle-float-1 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translate(8px, -18px);
+    opacity: 0.95;
+  }
+}
+
+@keyframes particle-float-2 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translate(-10px, 16px);
+    opacity: 0.85;
+  }
+}
+
+.particle-amber {
+  animation: particle-float-1 6s ease-in-out infinite;
+}
+
+.particle-cyan {
+  animation: particle-float-2 7s ease-in-out infinite 1s;
+}
+
+/* Animasi Pendaran Halus Sorotan Cahaya */
+@keyframes spotlight-pulse {
+  0%,
+  100% {
+    opacity: 0.85;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+.hero-top-spotlight {
+  animation: spotlight-pulse 8s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+/* ── Headline Living Shadow & Ambient Glow ── */
+.headline-living-shadow {
+  text-shadow:
+    0 2px 4px rgba(15, 23, 42, 0.06),
+    0 8px 20px rgba(15, 23, 42, 0.1);
+}
+
+.headline-orange-glow {
+  text-shadow:
+    0 2px 8px rgba(234, 88, 12, 0.42),
+    0 8px 24px rgba(234, 88, 12, 0.24);
+}
+
+/* ── Shimmer Sweep Button ── */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+/* ── Conic Shimmer Button ── */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn-shimmer::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 240px;
+  height: 240px;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 330deg,
+    rgba(255, 255, 255, 0.22) 348deg,
+    rgba(255, 255, 255, 0) 360deg
+  );
+  animation: btn-conic-spin 3s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes btn-conic-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* ══════════════════════════════════════════════
+   AI CHAT WIDGET STYLES & ANIMATIONS
+══════════════════════════════════════════════ */
+.bg-canvas-pattern {
+  background-color: #fbfcfe;
+  background-image: radial-gradient(#e2e8f0 0.85px, transparent 0.85px);
+  background-size: 24px 24px;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes float-shadow {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.85;
+    filter: blur(3px);
+  }
+  50% {
+    transform: scale(0.72);
+    opacity: 0.4;
+    filter: blur(5px);
+  }
+}
+
+.animate-float-shadow {
+  animation: float-shadow 3.5s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes popUpBottomToTop {
+  0% {
+    opacity: 0;
+    transform: translateY(32px) scale(0.96);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.015);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes cardPopRipple {
+  0% {
+    transform: scale(0.97);
+  }
+  45% {
+    transform: scale(1.035) translateY(-3px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes mascotNod {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.05) translateY(-8px) rotate(-1.5deg);
+  }
+  60% {
+    transform: scale(0.98) translateY(2px) rotate(1.2deg);
+  }
+}
+
+.pop-stagger-item {
+  will-change: transform, opacity;
+  transition:
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.animate-stagger-active {
+  animation: popUpBottomToTop 0.62s cubic-bezier(0.34, 1.45, 0.64, 1) both;
+}
+
+.delay-b2t-input {
+  animation-delay: 40ms;
+}
+.delay-b2t-card3 {
+  animation-delay: 130ms;
+}
+.delay-b2t-card2 {
+  animation-delay: 200ms;
+}
+.delay-b2t-card1 {
+  animation-delay: 270ms;
+}
+.delay-b2t-greeting {
+  animation-delay: 350ms;
+}
+.delay-b2t-mascot {
+  animation-delay: 430ms;
+}
+
+.card-clicked-bounce {
+  animation: cardPopRipple 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both !important;
+}
+
+.mascot-react {
+  animation: mascotNod 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

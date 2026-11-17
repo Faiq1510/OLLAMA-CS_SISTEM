@@ -8,7 +8,7 @@ const {
 } = require("../src/services/sessionService");
 const { getSystemPrompt } = require("../src/services/faqservice");
 
-describe("1. Unit Testing: Session Service", () => {
+describe("S1. Unit Testing: Session Service", () => {
   let createdSessionId = null;
 
   it("Harus membuat sessionId baru bertipe string jika tidak ada sessionId yang dikirim", () => {
