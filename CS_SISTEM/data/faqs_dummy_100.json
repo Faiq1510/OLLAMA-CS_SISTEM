@@ -1,0 +1,702 @@
+[
+  {
+    "id": "DATA-001",
+    "kategori": "jasa_web",
+    "pertanyaan": "Layanan apa saja yang disediakan oleh MicroData?",
+    "jawaban": "MicroData menyediakan 4 lini layanan utama: pembuatan website kustom (Landing Page, Company Profile, Toko Online, Web App), penjualan template digital siap pakai, modul add-on fitur seperti WhatsApp Gateway, dan layanan Cloud Hosting atau DevOps.",
+    "tags": "layanan, produk, ikhtisar, jasa"
+  },
+  {
+    "id": "DATA-002",
+    "kategori": "jasa_web",
+    "pertanyaan": "Apa itu paket Website Landing Page dan berapa biayanya?",
+    "jawaban": "Paket Landing Page dirancang untuk kebutuhan promosi satu produk atau campaign khusus dengan struktur konversi tinggi. Biaya pembuatan mulai dari Rp500.000 hingga Rp800.000, sudah mencakup desain responsif mobile dan integrasi tombol aksi WhatsApp.",
+    "tags": "landing page, promosi, harga, paket"
+  },
+  {
+    "id": "DATA-003",
+    "kategori": "jasa_web",
+    "pertanyaan": "Apa yang diperoleh dari paket Website Company Profile?",
+    "jawaban": "Paket Company Profile seharga Rp1.500.000 mencakup hingga 5 halaman utama (Beranda, Tentang Kami, Layanan/Produk, Galeri/Portofolio, Kontak), domain .com dan hosting gratis selama 1 tahun, email bisnis profesional, serta optimasi SEO dasar.",
+    "tags": "company profile, profil perusahaan, harga, fitur"
+  },
+  {
+    "id": "DATA-004",
+    "kategori": "jasa_web",
+    "pertanyaan": "Bagaimana spesifikasi paket Toko Online atau E-Commerce?",
+    "jawaban": "Paket Toko Online seharga Rp2.500.000 dilengkapi dengan katalog produk dinamis, keranjang belanja, integrasi ongkos kirim otomatis (JNE, SiCepat, J&T), notifikasi pesanan ke WhatsApp admin, serta dashboard pengelolaan stok barang.",
+    "tags": "toko online, e-commerce, katalog, belanja"
+  },
+  {
+    "id": "DATA-005",
+    "kategori": "jasa_web",
+    "pertanyaan": "Apakah MicroData melayani pembuatan Web Application kustom?",
+    "jawaban": "Ya, kami melayani pembuatan sistem informasi atau aplikasi web kustom seperti sistem inventaris, booking online, dan portal internal perusahaan. Biaya dimulai dari Rp3.500.000 tergantung kompleksitas alur kerja dan database yang dibutuhkan.",
+    "tags": "web app, custom web, sistem informasi"
+  },
+  {
+    "id": "DATA-006",
+    "kategori": "jasa_web",
+    "pertanyaan": "Teknologi dan stack apa yang digunakan untuk membangun website?",
+    "jawaban": "Kami menggunakan stack modern berbasis JavaScript dan TypeScript: frontend menggunakan Tailwind CSS, Vite, dan React/Vue, sedangkan backend menggunakan Node.js (Express) atau framework PHP seperti Laravel sesuai kebutuhan stabilitas proyek.",
+    "tags": "teknologi, tech stack, react, tailwind, nodejs"
+  },
+  {
+    "id": "DATA-007",
+    "kategori": "jasa_web",
+    "pertanyaan": "Apakah website yang dibuat sudah responsif di perangkat smartphone?",
+    "jawaban": "Seluruh website buatan MicroData menerapkan prinsip mobile-first design, sehingga tampilan dan fungsi dijamin rapi serta cepat saat diakses melalui smartphone, tablet, maupun monitor desktop.",
+    "tags": "mobile responsive, smartphone, tampilan"
+  },
+  {
+    "id": "DATA-008",
+    "kategori": "jasa_web",
+    "pertanyaan": "Apakah saya mendapatkan akses ke source code website?",
+    "jawaban": "Ya, setelah pembayaran lunas, seluruh source code menjadi hak milik penuh klien. Kami menyerahkan repositori kode melalui GitHub atau GitLab beserta berkas build siap deploy.",
+    "tags": "source code, kepemilikan, github, repositori"
+  },
+  {
+    "id": "DATA-009",
+    "kategori": "jasa_web",
+    "pertanyaan": "Apakah MicroData bisa membuatkan website portal berita atau blog?",
+    "jawaban": "Bisa. Kami memiliki paket web media dan portal berita dengan sistem manajemen konten (CMS), kategori artikel, sistem komentar, dan ruang penempatan slot banner iklan Google AdSense atau sponsor lokal.",
+    "tags": "portal berita, blog, cms, adsense"
+  },
+  {
+    "id": "DATA-010",
+    "kategori": "jasa_web",
+    "pertanyaan": "Apakah website yang dibuat sudah memenuhi standar SEO Google?",
+    "jawaban": "Ya, struktur HTML yang kami buat mengikuti kaidah Semantic HTML, kecepatan akses dioptimasi, serta sudah dilengkapi konfigurasi OpenGraph, meta description, dan sitemap XML agar cepat terindeks oleh mesin pencari Google.",
+    "tags": "seo, google indexing, meta tag, sitemap"
+  },
+  {
+    "id": "DATA-011",
+    "kategori": "jasa_web",
+    "pertanyaan": "Apakah saya bisa meminta integrasi form kontak langsung ke email?",
+    "jawaban": "Bisa. Seluruh paket website dapat dilengkapi formulir pesan yang secara instan meneruskan pesan pengunjung langsung ke email resmi perusahaan Anda tanpa biaya tambahan.",
+    "tags": "form kontak, email bisnis, notifikasi"
+  },
+  {
+    "id": "DATA-012",
+    "kategori": "jasa_web",
+    "pertanyaan": "Apakah bisa menambahkan fitur kalkulator estimasi biaya pada website?",
+    "jawaban": "Bisa. Kami dapat menyematkan modul kalkulator interaktif sesuai logika hitungan bisnis Anda, misalnya kalkulator pinjaman, simulasi harga paket, atau penghitung biaya pengiriman.",
+    "tags": "kalkulator, simulasi, fitur interaktif"
+  },
+  {
+    "id": "DATA-013",
+    "kategori": "jasa_web",
+    "pertanyaan": "Apakah klien bisa memperbarui konten teks dan gambar sendiri?",
+    "jawaban": "Bisa. Kami menyediakan panel admin atau CMS sederhana yang memudahkan klien awam untuk mengubah teks deskripsi, memperbarui nomor kontak, menambah produk, atau mengunggah foto baru tanpa harus paham coding.",
+    "tags": "cms, kelola konten, edit mandiri"
+  },
+  {
+    "id": "DATA-014",
+    "kategori": "jasa_web",
+    "pertanyaan": "Apakah MicroData melayani redesign atau perombakan website lama?",
+    "jawaban": "Ya, kami melayani perombakan tampilan website lama yang sudah ketinggalan zaman agar terlihat modern, lebih cepat diakses, dan responsif di smartphone dengan tetap mempertahankan data artikel yang sudah ada.",
+    "tags": "redesign, rombak website, modernisasi"
+  },
+  {
+    "id": "DATA-015",
+    "kategori": "jasa_web",
+    "pertanyaan": "Apakah ada batasan jumlah halaman untuk paket website kustom?",
+    "jawaban": "Paket standar Company Profile mencakup 5 halaman. Jika membutuhkan halaman tambahan, biayanya adalah Rp150.000 per halaman tambahan dengan desain dan layout terintegrasi.",
+    "tags": "jumlah halaman, biaya tambah halaman"
+  },
+  {
+    "id": "DATA-016",
+    "kategori": "jasa_web",
+    "pertanyaan": "Apakah disediakan layanan pembuatan logo jika belum memiliki logo?",
+    "jawaban": "MicroData menyediakan add-on desain logo identitas merek berbasis vektor (SVG dan PNG resolusi tinggi) dengan biaya tambahan mulai dari Rp300.000 untuk 2 alternatif konsep.",
+    "tags": "desain logo, branding, identitas"
+  },
+  {
+    "id": "DATA-017",
+    "kategori": "jasa_web",
+    "pertanyaan": "Apakah website buatan MicroData aman dari serangan siber?",
+    "jawaban": "Kami menerapkan best practice keamanan standar: proteksi Cross-Site Scripting (XSS), SQL Injection, rate limiting untuk mencegah serangan brute force pada form, serta sertifikat SSL HTTPS gratis selamanya.",
+    "tags": "keamanan, ssl, https, proteksi"
+  },
+  {
+    "id": "DATA-018",
+    "kategori": "jasa_web",
+    "pertanyaan": "Apakah MicroData bisa membuatkan website profil sekolah atau universitas?",
+    "jawaban": "Bisa. Kami memiliki spesifikasi khusus untuk institusi pendidikan, mencakup menu profil akademik, kalender kegiatan, pengumuman pendaftaran siswa baru (PPDB online), dan galeri prestasi.",
+    "tags": "website sekolah, universitas, ppdb online"
+  },
+  {
+    "id": "DATA-019",
+    "kategori": "jasa_web",
+    "pertanyaan": "Apakah MicroData membuat website travel agent atau rental mobil?",
+    "jawaban": "Ya. Kami menyediakan sistem website rental dan travel yang dilengkapi formulir pemesanan armada, pemilihan tanggal sewa, rincian fasilitas kendaraan, serta kalkulasi otomatis total tarif perjalanan.",
+    "tags": "rental mobil, travel agent, booking sewa"
+  },
+  {
+    "id": "DATA-020",
+    "kategori": "jasa_web",
+    "pertanyaan": "Bagaimana jika saya memerlukan website dengan fitur multi-cabang?",
+    "jawaban": "Kami bisa mengintegrasikan peta interaktif Google Maps beserta daftar lokasi cabang usaha, nomor telepon masing-masing cabang, dan tombol navigasi langsung ke Google Maps.",
+    "tags": "multi cabang, google maps, lokasi toko"
+  },
+  {
+    "id": "DATA-021",
+    "kategori": "template_digital",
+    "pertanyaan": "Apa saja template digital yang dijual oleh MicroData?",
+    "jawaban": "Kami menjual produk template digital siap pakai seperti Template Dashboard Admin (Rp250.000), Starter Kit Fullstack SaaS (Rp350.000), serta UI Kit Toko Online berbasis Tailwind CSS dan Vite.",
+    "tags": "template digital, produk source code, dashboard admin"
+  },
+  {
+    "id": "DATA-022",
+    "kategori": "template_digital",
+    "pertanyaan": "Apa keunggulan Template Dashboard Admin seharga Rp250.000?",
+    "jawaban": "Template Dashboard Admin kami dibangun dengan arsitektur modular Tailwind CSS v4, sudah dilengkapi grafik statistik analitik interaktif, tabel data dengan fitur pencarian dan filter, mode gelap terang, serta clean code tanpa dependensi berat.",
+    "tags": "dashboard admin, tailwind, keunggulan template"
+  },
+  {
+    "id": "DATA-023",
+    "kategori": "template_digital",
+    "pertanyaan": "Format file apa yang didapatkan saat membeli template digital?",
+    "jawaban": "Klien akan menerima arsip berkas zip lengkap berisi source code frontend (.html, .js, .css), konfigurasi package.json Vite, file README dokumentasi cara pasang, serta akses repositori Git pribadi.",
+    "tags": "format file, download zip, source code template"
+  },
+  {
+    "id": "DATA-024",
+    "kategori": "template_digital",
+    "pertanyaan": "Apakah template digital boleh digunakan untuk proyek klien saya sendiri?",
+    "jawaban": "Boleh. Setiap pembelian template menyertakan lisensi penggunaan komersial tunggal maupun multi-proyek untuk satu pengembang, tanpa kewajiban mencantumkan kredit ke MicroData.",
+    "tags": "lisensi komersial, hak pakai template"
+  },
+  {
+    "id": "DATA-025",
+    "kategori": "template_digital",
+    "pertanyaan": "Apakah pembelian template digital mendapatkan pembaruan atau update kode?",
+    "jawaban": "Ya, seluruh pembeli template berhak atas pembaruan perbaikan bug dan pembaruan versi pustaka pihak ketiga secara gratis melalui repositori Git selama 1 tahun penuh.",
+    "tags": "update kode, free updates, perbaikan bug"
+  },
+  {
+    "id": "DATA-026",
+    "kategori": "template_digital",
+    "pertanyaan": "Bagaimana cara memasang dan menjalankan template digital yang sudah dibeli?",
+    "jawaban": "Cukup ekstrak berkas zip, buka folder pada terminal/editor, jalankan perintah npm install untuk mengunduh modul, lalu jalankan npm run dev. Panduan lengkap ada di dalam file README.md.",
+    "tags": "instalasi template, npm install, panduan"
+  },
+  {
+    "id": "DATA-027",
+    "kategori": "template_digital",
+    "pertanyaan": "Apakah template digital sudah terhubung ke backend database?",
+    "jawaban": "Template digital default difokuskan pada antarmuka frontend (UI/UX) dengan integrasi REST API siap pakai (mock API). Kami menyediakan opsi paket bundling backend Express atau Laravel jika Anda membutuhkan fullstack.",
+    "tags": "backend database, frontend template, mock api"
+  },
+  {
+    "id": "DATA-028",
+    "kategori": "template_digital",
+    "pertanyaan": "Apakah MicroData bisa membantu proses kustomisasi template yang dibeli?",
+    "jawaban": "Bisa. Jika Anda memerlukan bantuan tim kami untuk menyesuaikan logo, palet warna merek, atau menambahkan halaman baru pada template, kami menyediakan jasa kustomisasi dengan tarif mulai dari Rp150.000.",
+    "tags": "kustomisasi template, jasa edit kode"
+  },
+  {
+    "id": "DATA-029",
+    "kategori": "template_digital",
+    "pertanyaan": "Apakah template dashboard admin mendukung Dark Mode?",
+    "jawaban": "Ya, seluruh template UI MicroData mendukung fitur Dark Mode dan Light Mode otomatis yang tersimpan di local storage browser pengguna.",
+    "tags": "dark mode, mode gelap, tema tampilan"
+  },
+  {
+    "id": "DATA-030",
+    "kategori": "template_digital",
+    "pertanyaan": "Apakah template kompatibel dengan framework React atau Next.js?",
+    "jawaban": "Kami menyediakan varian khusus berbasis komponen React murni serta varian HTML/Vite statis sehingga memudahkan Anda melakukan migrasi ke Next.js atau framework modern lainnya.",
+    "tags": "react, nextjs, kompatibilitas framework"
+  },
+  {
+    "id": "DATA-031",
+    "kategori": "template_digital",
+    "pertanyaan": "Berapa ukuran file download dari template digital?",
+    "jawaban": "Ukuran arsip source code sangat ringan, berkisar antara 2 MB hingga 8 MB (tanpa folder node_modules), sehingga cepat diunduh dan tidak memakan kuota penyimpanan.",
+    "tags": "ukuran file, download size, efisiensi"
+  },
+  {
+    "id": "DATA-032",
+    "kategori": "template_digital",
+    "pertanyaan": "Apakah ada contoh demo interaktif template sebelum membeli?",
+    "jawaban": "Tentu. Setiap kartu produk template di katalog MicroData memiliki tombol tautan Live Preview untuk mencoba seluruh fitur, animasi, dan navigasi secara langsung di browser Anda.",
+    "tags": "live preview, demo template, coba sebelum beli"
+  },
+  {
+    "id": "DATA-033",
+    "kategori": "template_digital",
+    "pertanyaan": "Bagaimana jika terjadi error saat menjalankan template pertama kali?",
+    "jawaban": "Tim teknis kami menyediakan dukungan teknis gratis selama 14 hari kerja melalui email atau WhatsApp untuk membantu memandu proses setup hingga aplikasi berhasil berjalan di komputer Anda.",
+    "tags": "bantuan teknis, error instalasi, support"
+  },
+  {
+    "id": "DATA-034",
+    "kategori": "template_digital",
+    "pertanyaan": "Apakah template digital boleh dijual kembali ke orang lain?",
+    "jawaban": "Tidak diperbolehkan. Dilarang mendistribusikan ulang, membagikan gratis, atau menjual kembali source code mentah template. Template hanya boleh dijual sebagai bagian dari produk akhir klien yang sudah diubah.",
+    "tags": "hak cipta template, larangan jual ulang"
+  },
+  {
+    "id": "DATA-035",
+    "kategori": "template_digital",
+    "pertanyaan": "Apakah template digital menyediakan fitur autentikasi login?",
+    "jawaban": "Ya, pada paket Fullstack SaaS Starter sudah tersedia halaman login, register, forgot password, validasi form, dan middleware verifikasi JSON Web Token (JWT).",
+    "tags": "login form, autentikasi, jwt, registrasi"
+  },
+  {
+    "id": "DATA-036",
+    "kategori": "addon_fitur",
+    "pertanyaan": "Apa itu modul Add-on WhatsApp Gateway dan berapa biayanya?",
+    "jawaban": "Modul WhatsApp Gateway seharga Rp300.000 adalah sistem otomasi yang memungkinkan website Anda mengirimkan pesan konfirmasi pesanan, invoice PDF, atau notifikasi login OTP secara otomatis ke nomor WhatsApp pelanggan.",
+    "tags": "whatsapp gateway, notifikasi wa, harga modul"
+  },
+  {
+    "id": "DATA-037",
+    "kategori": "addon_fitur",
+    "pertanyaan": "Apakah integrasi Payment Gateway otomatis didukung di MicroData?",
+    "jawaban": "Ya, kami melayani integrasi Payment Gateway resmi seperti Midtrans, Xendit, atau Doku seharga Rp350.000, mendukung pembayaran otomatis via QRIS, Virtual Account Bank (BCA, Mandiri, BRI, BNI), dan e-Wallet.",
+    "tags": "payment gateway, midtrans, xendit, qris"
+  },
+  {
+    "id": "DATA-038",
+    "kategori": "addon_fitur",
+    "pertanyaan": "Apakah MicroData bisa mengintegrasikan chatbot kecerdasan buatan (AI)?",
+    "jawaban": "Bisa. Kami melayani pemasangan widget Chatbot Customer Service AI berbasis model lokal (Ollama) maupun cloud API (OpenAI/Gemini) dengan biaya setup mulai dari Rp500.000.",
+    "tags": "chatbot ai, ollama, asisten pintar"
+  },
+  {
+    "id": "DATA-039",
+    "kategori": "addon_fitur",
+    "pertanyaan": "Bagaimana cara kerja fitur multi-bahasa (Multi-Language)?",
+    "jawaban": "Add-on multi-bahasa memungkinkan pengunjung beralih antara Bahasa Indonesia dan Bahasa Inggris dengan sekali klik tombol bendera, di mana seluruh konten teks akan otomatis berganti secara instan.",
+    "tags": "multi bahasa, bahasa inggris, toggle bahasa"
+  },
+  {
+    "id": "DATA-040",
+    "kategori": "addon_fitur",
+    "pertanyaan": "Berapa biaya penambahan fitur multi-bahasa pada website?",
+    "jawaban": "Biaya add-on sistem multi-bahasa adalah Rp250.000 untuk struktur website standar hingga 5 halaman, sudah termasuk penyiapan file kamus lokalisasi JSON.",
+    "tags": "biaya multi bahasa, harga addon"
+  },
+  {
+    "id": "DATA-041",
+    "kategori": "addon_fitur",
+    "pertanyaan": "Apakah ada fitur integrasi live chat WhatsApp mengambang di pojok layar?",
+    "jawaban": "Ya, kami dapat menyematkan tombol floating action button WhatsApp di sudut kanan bawah website dengan pesan pembuka otomatis sesuai halaman yang sedang dilihat pengunjung.",
+    "tags": "floating whatsapp, tombol chat melayang"
+  },
+  {
+    "id": "DATA-042",
+    "kategori": "addon_fitur",
+    "pertanyaan": "Apakah website bisa dipasangi Google Analytics dan Meta Pixel?",
+    "jawaban": "Bisa. Kami melayani instalasi kode pelacak Google Analytics 4 (GA4), Google Tag Manager, dan Meta Pixel untuk kebutuhan pemantauan traffic serta iklan berbayar (FB/IG Ads).",
+    "tags": "google analytics, ga4, meta pixel, tracking iklan"
+  },
+  {
+    "id": "DATA-043",
+    "kategori": "addon_fitur",
+    "pertanyaan": "Apakah tersedia add-on sistem reservasi atau booking jadwal online?",
+    "jawaban": "Tersedia. Modul reservasi memungkinkan klien memilih tanggal, jam kunjungan, dan jenis layanan dengan pembatasan kuota otomatis agar tidak terjadi bentrok jadwal.",
+    "tags": "booking online, reservasi jadwal, kalender"
+  },
+  {
+    "id": "DATA-044",
+    "kategori": "addon_fitur",
+    "pertanyaan": "Apakah bisa menambahkan fitur unduh katalog produk PDF otomatis?",
+    "jawaban": "Bisa. Pengunjung dapat memasukkan nama dan email atau nomor WhatsApp sebelum tombol unduh berkas brosur/katalog PDF dapat diakses, sangat bagus untuk mengumpulkan prospek (lead magnet).",
+    "tags": "lead magnet, download katalog pdf, prospek"
+  },
+  {
+    "id": "DATA-045",
+    "kategori": "addon_fitur",
+    "pertanyaan": "Apakah ada fitur integrasi feed Instagram ke dalam halaman website?",
+    "jawaban": "Ada. Kami dapat menyematkan galeri widget feed postingan akun Instagram perusahaan Anda agar foto-foto terbaru otomatis tampil di website secara real-time.",
+    "tags": "instagram feed, galeri foto, sosial media"
+  },
+  {
+    "id": "DATA-046",
+    "kategori": "addon_fitur",
+    "pertanyaan": "Apakah website bisa diubah menjadi aplikasi Android (PWA)?",
+    "jawaban": "Bisa. Kami menyediakan konfigurasi Progressive Web App (PWA) seharga Rp300.000 yang memungkinkan website di-install langsung ke layar utama smartphone seperti aplikasi asli tanpa lewat Play Store.",
+    "tags": "pwa, progressive web app, aplikasi mobile"
+  },
+  {
+    "id": "DATA-047",
+    "kategori": "addon_fitur",
+    "pertanyaan": "Apakah MicroData bisa membuat sistem ekspor laporan ke Excel atau PDF?",
+    "jawaban": "Bisa. Pada panel admin atau sistem web kustom, kami dapat menambahkan fitur tombol untuk mengekspor data tabel penjualan, kontak, atau absensi ke dalam format file .xlsx (Excel) atau .pdf.",
+    "tags": "export excel, cetak pdf, laporan data"
+  },
+  {
+    "id": "DATA-048",
+    "kategori": "addon_fitur",
+    "pertanyaan": "Apakah bisa menambahkan proteksi klik kanan dan anti-copas teks?",
+    "jawaban": "Bisa. Kami dapat menerapkan skrip pelindung konten untuk menonaktifkan klik kanan dan seleksi teks agar materi portofolio atau tulisan Anda tidak mudah dicuri orang lain.",
+    "tags": "anti copas, disable klik kanan, proteksi konten"
+  },
+  {
+    "id": "DATA-049",
+    "kategori": "addon_fitur",
+    "pertanyaan": "Apakah ada fitur verifikasi Google reCAPTCHA v3 untuk form kontak?",
+    "jawaban": "Ya, kami menyematkan Google reCAPTCHA v3 tanpa checklist yang berjalan di latar belakang untuk mencegah serangan bot dan pesan spam massal masuk ke inbox Anda.",
+    "tags": "recaptcha, anti spam, proteksi bot"
+  },
+  {
+    "id": "DATA-050",
+    "kategori": "addon_fitur",
+    "pertanyaan": "Berapa lama proses pemasangan satu modul add-on fitur?",
+    "jawaban": "Pemasangan modul add-on pada website yang sudah berjalan umumnya memakan waktu 1 hingga 2 hari kerja tergantung kesiapan kredensial API dari pihak ketiga.",
+    "tags": "waktu pasang addon, proses instalasi fitur"
+  },
+  {
+    "id": "DATA-051",
+    "kategori": "hosting_cloud",
+    "pertanyaan": "Layanan hosting apa saja yang disediakan oleh MicroData?",
+    "jawaban": "Kami menyediakan Cloud Hosting bersama (Shared Cloud), VPS (Virtual Private Server) berperforma tinggi mulai Rp116.900/bulan, serta layanan setup server mandiri dan konfigurasi DevOps.",
+    "tags": "vps, cloud hosting, server, harga hosting"
+  },
+  {
+    "id": "DATA-052",
+    "kategori": "hosting_cloud",
+    "pertanyaan": "Berapa spesifikasi paket VPS Cloud Hosting Rp116.900 per bulan?",
+    "jawaban": "Paket promo Black Friday VPS kami mencakup 4 vCPU Cores, 8 GB RAM DDR5, 100 GB NVMe Disk Space Ultra-Speed, perlindungan DDoS Shield 20Gbps, serta fitur Auto-Backup mingguan.",
+    "tags": "spesifikasi vps, ram 8gb, nvme, ddos shield"
+  },
+  {
+    "id": "DATA-053",
+    "kategori": "hosting_cloud",
+    "pertanyaan": "Apakah biaya pembuatan website sudah termasuk nama domain?",
+    "jawaban": "Ya, untuk paket Company Profile dan Toko Online sudah mencakup pendaftaran domain berekstensi .com atau .id secara gratis untuk tahun pertama.",
+    "tags": "domain gratis, dot com, dot id"
+  },
+  {
+    "id": "DATA-054",
+    "kategori": "hosting_cloud",
+    "pertanyaan": "Bagaimana jika saya sudah memiliki domain dan hosting sendiri sebelumnya?",
+    "jawaban": "Tidak masalah. Kami dapat mendeploy website baru langsung ke akun hosting atau server VPS milik Anda tanpa ada pengurangan kualitas atau pemotongan garansi layanan.",
+    "tags": "hosting sendiri, migrasi server, deploy mandiri"
+  },
+  {
+    "id": "DATA-055",
+    "kategori": "hosting_cloud",
+    "pertanyaan": "Apakah sertifikat SSL HTTPS sudah termasuk dalam paket?",
+    "jawaban": "Ya, seluruh website yang di-hosting bersama kami otomatis terpasang sertifikat SSL Let's Encrypt (HTTPS gembok hijau) gratis selamanya dengan pembaruan otomatis setiap 90 hari.",
+    "tags": "ssl gratis, https, lets encrypt, gembok hijau"
+  },
+  {
+    "id": "DATA-056",
+    "kategori": "hosting_cloud",
+    "pertanyaan": "Berapa biaya perpanjangan tahunan untuk domain dan hosting?",
+    "jawaban": "Biaya perpanjangan tahun kedua dan seterusnya untuk domain .com dan Cloud Hosting standar adalah berkisar antara Rp500.000 hingga Rp750.000 per tahun, tergantung kapasitas disk space.",
+    "tags": "biaya perpanjang, renewal domain, biaya tahunan"
+  },
+  {
+    "id": "DATA-057",
+    "kategori": "hosting_cloud",
+    "pertanyaan": "Sistem operasi apa yang digunakan pada server VPS MicroData?",
+    "jawaban": "Kami menggunakan distribusi Linux tingkat enterprise seperti Ubuntu Server 22.04/24.04 LTS atau Debian dengan web server Nginx yang teroptimasi untuk performa dan keamanan tinggi.",
+    "tags": "ubuntu server, linux, nginx, web server"
+  },
+  {
+    "id": "DATA-058",
+    "kategori": "hosting_cloud",
+    "pertanyaan": "Apakah MicroData menyediakan email kustom dengan domain sendiri?",
+    "jawaban": "Ya, Anda akan mendapatkan akun email profesional seperti admin@perusahaananda.com atau halo@domainanda.com yang dapat dihubungkan ke aplikasi Gmail di smartphone.",
+    "tags": "email bisnis, webmail, email custom domain"
+  },
+  {
+    "id": "DATA-059",
+    "kategori": "hosting_cloud",
+    "pertanyaan": "Berapa kapasitas akun email bisnis yang diberikan?",
+    "jawaban": "Paket standar mencakup hingga 3 akun email bisnis dengan kuota penyimpanan gabungan sesuai paket hosting Anda, dapat ditambah jika kebutuhan tim membesar.",
+    "tags": "kuota email, jumlah akun email bisnis"
+  },
+  {
+    "id": "DATA-060",
+    "kategori": "hosting_cloud",
+    "pertanyaan": "Apakah data website saya dicadangkan (backup) secara rutin?",
+    "jawaban": "Ya, sistem cloud kami melakukan auto-backup berkala setiap minggu untuk database dan source code agar data bisnis Anda tetap aman saat terjadi kendala fatal.",
+    "tags": "backup otomatis, cadangan data, keamanan data"
+  },
+  {
+    "id": "DATA-061",
+    "kategori": "hosting_cloud",
+    "pertanyaan": "Berapa SLA uptime server yang digaransi oleh MicroData?",
+    "jawaban": "Infrastruktur server cloud kami menjamin garansi Network Uptime hingga 99,9% per bulan berkat dukungan data center tier-3 di Jakarta dan Singapura.",
+    "tags": "uptime server, sla 99.9, data center"
+  },
+  {
+    "id": "DATA-062",
+    "kategori": "hosting_cloud",
+    "pertanyaan": "Apakah bisa membantu migrasi website dari penyedia hosting lama ke MicroData?",
+    "jawaban": "Bisa. Kami menyediakan layanan migrasi data website, database, dan email dari hosting lama Anda ke server MicroData secara gratis tanpa downtime.",
+    "tags": "migrasi hosting, pindah server, free migrasi"
+  },
+  {
+    "id": "DATA-063",
+    "kategori": "hosting_cloud",
+    "pertanyaan": "Di mana lokasi data center server yang digunakan?",
+    "jawaban": "Lokasi data center utama berada di Jakarta (Indonesia) untuk menjamin latensi super cepat bagi pengunjung domestik, serta opsi Singapura untuk jangkauan regional Asia Tenggara.",
+    "tags": "lokasi server, data center jakarta, singapore"
+  },
+  {
+    "id": "DATA-064",
+    "kategori": "hosting_cloud",
+    "pertanyaan": "Apakah MicroData melayani konfigurasi CI/CD dan Docker?",
+    "jawaban": "Ya, untuk kebutuhan proyek enterprise, tim DevOps kami melayani setup containerization Docker, reverse proxy Nginx, dan pipeline CI/CD GitHub Actions untuk otomasi deployment.",
+    "tags": "devops, docker, github actions, cicd"
+  },
+  {
+    "id": "DATA-065",
+    "kategori": "hosting_cloud",
+    "pertanyaan": "Bagaimana jika kuota bandwidth hosting saya habis di tengah bulan?",
+    "jawaban": "Seluruh paket hosting MicroData menggunakan unmetered bandwidth, sehingga website Anda tidak akan tersuspensi meskipun mengalami lonjakan pengunjung yang tinggi.",
+    "tags": "unmetered bandwidth, traffic tinggi, kuota pengunjung"
+  },
+  {
+    "id": "DATA-066",
+    "kategori": "harga_pembayaran",
+    "pertanyaan": "Bagaimana skema pembayaran pemesanan jasa di MicroData?",
+    "jawaban": "Kami menerapkan sistem termin transparan: Down Payment (DP) sebesar 50% di awal sebelum proyek dimulai, dan pelunasan sisa 50% setelah website selesai diuji coba dan disetujui klien.",
+    "tags": "skema pembayaran, dp 50 persen, pelunasan"
+  },
+  {
+    "id": "DATA-067",
+    "kategori": "harga_pembayaran",
+    "pertanyaan": "Metode pembayaran apa saja yang diterima?",
+    "jawaban": "Kami menerima pembayaran melalui transfer Bank (BCA, Mandiri, BRI), QRIS instan dari semua aplikasi e-Wallet (GoPay, OVO, Dana), serta transfer rekening koran perusahaan untuk badan hukum.",
+    "tags": "metode bayar, transfer bank, qris, gopay"
+  },
+  {
+    "id": "DATA-068",
+    "kategori": "harga_pembayaran",
+    "pertanyaan": "Apakah MicroData menerbitkan invoice resmi dan kwitansi?",
+    "jawaban": "Ya, setiap transaksi pemesanan akan diterbitkan e-Invoice resmi dengan rincian layanan, nomor rekening, dan tanda tangan digital, serta tanda terima kwitansi pelunasan setelah pembayaran diterima.",
+    "tags": "invoice, kwitansi, bukti pembayaran resmi"
+  },
+  {
+    "id": "DATA-069",
+    "kategori": "harga_pembayaran",
+    "pertanyaan": "Apakah harga yang tercantum sudah termasuk pajak PPN?",
+    "jawaban": "Harga paket standar yang tertera di website belum termasuk PPN 11%. Jika Anda mewakili perusahaan yang membutuhkan Faktur Pajak resmi, silakan informasikan NPWP kepada tim kami.",
+    "tags": "pajak, ppn 11 persen, faktur pajak"
+  },
+  {
+    "id": "DATA-070",
+    "kategori": "harga_pembayaran",
+    "pertanyaan": "Apakah ada diskon jika memesan lebih dari satu website sekaligus?",
+    "jawaban": "Ya, kami memberikan potongan harga sebesar 15% untuk pemesanan minimal 2 website sekaligus, atau diskon bundling saat mengambil paket website bersamaan dengan template digital.",
+    "tags": "diskon, promo borongan, potongan harga"
+  },
+  {
+    "id": "DATA-071",
+    "kategori": "harga_pembayaran",
+    "pertanyaan": "Apakah ada biaya tersembunyi selain harga paket yang disepakati?",
+    "jawaban": "Tidak ada. Harga yang kami tawarkan dalam invoice bersifat all-in sesuai rincian fitur yang disetujui. Biaya tambahan hanya berlaku jika ada permintaan fitur baru di luar ruang lingkup awal.",
+    "tags": "biaya tersembunyi, transparansi harga, no hidden fee"
+  },
+  {
+    "id": "DATA-072",
+    "kategori": "harga_pembayaran",
+    "pertanyaan": "Apakah DP yang sudah dibayarkan bisa dikembalikan jika dibatalkan?",
+    "jawaban": "Jika pembatalan dilakukan sepihak oleh klien saat tim teknis kami sudah mulai merancang desain atau melakukan coding, dana DP tidak dapat ditarik kembali karena dialokasikan untuk biaya riset dan server.",
+    "tags": "kebijakan refund, pembatalan proyek, aturan dp"
+  },
+  {
+    "id": "DATA-073",
+    "kategori": "harga_pembayaran",
+    "pertanyaan": "Bagaimana cara melakukan pembayaran produk template digital?",
+    "jawaban": "Pembelian template digital dilakukan secara pembayaran penuh (100% di awal) melalui QRIS atau transfer bank. Tautan unduh source code dan akses GitHub akan langsung aktif secara instan.",
+    "tags": "beli template, bayar lunas, link download"
+  },
+  {
+    "id": "DATA-074",
+    "kategori": "harga_pembayaran",
+    "pertanyaan": "Kapan tenggat waktu pembayaran pelunasan website?",
+    "jawaban": "Pelunasan sisa 50% dibayarkan paling lambat 3 hari kerja setelah website selesai dipresentasikan di server demo dan klien menyatakan setuju terhadap hasil akhirnya.",
+    "tags": "tenggat pelunasan, jadwal bayar sisa"
+  },
+  {
+    "id": "DATA-075",
+    "kategori": "harga_pembayaran",
+    "pertanyaan": "Apakah pembayaran bisa dicicil menggunakan kartu kredit?",
+    "jawaban": "Bisa, pembayaran melalui kartu kredit dapat diproses lewat payment gateway dengan opsi cicilan 0% tenor 3 hingga 12 bulan sesuai ketentuan bank penerbit kartu kredit Anda.",
+    "tags": "cicilan, kartu kredit, tenor 12 bulan"
+  },
+  {
+    "id": "DATA-076",
+    "kategori": "harga_pembayaran",
+    "pertanyaan": "Apakah MicroData memberikan promo khusus untuk UMKM atau Startup baru?",
+    "jawaban": "Ya, kami memiliki program MicroData for UMKM dengan potongan harga khusus hingga Rp200.000 untuk paket Landing Page dan Company Profile dengan menunjukkan bukti legalitas usaha.",
+    "tags": "promo umkm, subsidi startup, diskon bisnis kecil"
+  },
+  {
+    "id": "DATA-077",
+    "kategori": "harga_pembayaran",
+    "pertanyaan": "Bagaimana prosedur konfirmasi setelah melakukan transfer pembayaran?",
+    "jawaban": "Cukup kirimkan bukti transfer atau tangkapan layar struk pembayaran ke nomor WhatsApp resmi kami di 0812-3456-7890 dengan menyertakan Nomor Invoice Anda.",
+    "tags": "konfirmasi transfer, bukti bayar, whatsapp"
+  },
+  {
+    "id": "DATA-078",
+    "kategori": "harga_pembayaran",
+    "pertanyaan": "Apakah saya bisa memesan penulisan artikel konten website sekalian?",
+    "jawaban": "Bisa. Kami menyediakan layanan copywriting profesional seharga Rp100.000 per 500 kata yang persuasif dan teroptimasi SEO untuk mengisi teks profil dan artikel website Anda.",
+    "tags": "jasa copywriting, penulisan artikel, konten teks"
+  },
+  {
+    "id": "DATA-079",
+    "kategori": "harga_pembayaran",
+    "pertanyaan": "Berapa biaya perpanjangan jika hanya memiliki domain saja tanpa hosting?",
+    "jawaban": "Perpanjangan domain internasional .com adalah Rp195.000 per tahun, sedangkan domain .id adalah Rp245.000 per tahun sesuai regulasi PANDI.",
+    "tags": "biaya domain com, perpanjang domain id"
+  },
+  {
+    "id": "DATA-080",
+    "kategori": "harga_pembayaran",
+    "pertanyaan": "Apakah bisa meminta penyesuaian anggaran di bawah paket yang tertera?",
+    "jawaban": "Kami dapat menyesuaikan ruang lingkup fitur agar pas dengan anggaran Anda, misalnya dengan menyederhanakan jumlah halaman atau memakai template dasar pilihan kami.",
+    "tags": "negosiasi harga, sesuaikan budget, custom scope"
+  },
+  {
+    "id": "DATA-081",
+    "kategori": "alur_pemesanan",
+    "pertanyaan": "Bagaimana alur lengkap pemesanan website di MicroData?",
+    "jawaban": "Alur 4 langkah mudah: 1) Konsultasi kebutuhan dan penetapan paket, 2) Pembayaran DP 50% & pengiriman materi, 3) Tahap desain dan pemrograman dengan uji coba demo, 4) Pelunasan sisa 50% dan peluncuran website ke domain resmi.",
+    "tags": "tahapan order, alur kerja, langkah pemesanan"
+  },
+  {
+    "id": "DATA-082",
+    "kategori": "alur_pemesanan",
+    "pertanyaan": "Berapa lama waktu pengerjaan untuk Website Landing Page?",
+    "jawaban": "Website Landing Page diselesaikan dalam rentang 2 hingga 4 hari kerja terhitung sejak materi teks dan foto lengkap kami terima.",
+    "tags": "durasi landing page, waktu kerja cepat"
+  },
+  {
+    "id": "DATA-083",
+    "kategori": "alur_pemesanan",
+    "pertanyaan": "Berapa lama estimasi waktu pengerjaan Website Company Profile?",
+    "jawaban": "Website Company Profile standar membutuhkan waktu sekitar 5 hingga 7 hari kerja untuk proses desain visual, coding responsif, dan integrasi formulir kontak.",
+    "tags": "durasi company profile, batas waktu pengerjaan"
+  },
+  {
+    "id": "DATA-084",
+    "kategori": "alur_pemesanan",
+    "pertanyaan": "Berapa lama pengerjaan untuk Toko Online atau Web App Kustom?",
+    "jawaban": "Pembuatan Toko Online memakan waktu 10 hingga 14 hari kerja, sedangkan Web App kustom membutuhkan 14 hingga 30 hari kerja tergantung kompleksitas alur database.",
+    "tags": "durasi toko online, waktu web app kustom"
+  },
+  {
+    "id": "DATA-085",
+    "kategori": "alur_pemesanan",
+    "pertanyaan": "Materi apa saja yang harus disiapkan oleh klien sebelum proyek dimulai?",
+    "jawaban": "Klien diharapkan menyiapkan: 1) Logo perusahaan (format PNG transparan/vektor), 2) Teks profil atau deskripsi produk, 3) Foto pendukung, serta 4) Kontak resmi (WhatsApp, email, alamat).",
+    "tags": "materi klien, syarat pengerjaan, persiapan logo"
+  },
+  {
+    "id": "DATA-086",
+    "kategori": "alur_pemesanan",
+    "pertanyaan": "Bagaimana jika klien belum memiliki materi tulisan dan foto sama sekali?",
+    "jawaban": "Tim kami dapat membantu menyediakan foto stok berlisensi komersial dan menyusun draf teks sementara (dummy content) yang nantinya bisa Anda sempurnakan.",
+    "tags": "bantuan materi, foto stok, dummy text"
+  },
+  {
+    "id": "DATA-087",
+    "kategori": "alur_pemesanan",
+    "pertanyaan": "Berapa kali batas kesempatan revisi yang diberikan?",
+    "jawaban": "Kami memberikan jatah maksimal 2 kali sesi revisi minor (seperti pergantian warna tombol, koreksi teks, atau pemindahan susunan blok) selama masa pengerjaan.",
+    "tags": "jatah revisi, ketentuan revisi minor, kuota revisi"
+  },
+  {
+    "id": "DATA-088",
+    "kategori": "alur_pemesanan",
+    "pertanyaan": "Apa perbedaan antara revisi minor dan revisi mayor?",
+    "jawaban": "Revisi minor adalah penyesuaian teks, warna, atau font tanpa merombak struktur. Revisi mayor adalah permintaan merombak total konsep tata letak dari awal yang dikenakan biaya tambahan sesuai kesepakatan.",
+    "tags": "revisi minor, revisi mayor, beda revisi"
+  },
+  {
+    "id": "DATA-089",
+    "kategori": "alur_pemesanan",
+    "pertanyaan": "Apakah saya bisa memantau perkembangan proses pembuatan website?",
+    "jawaban": "Bisa. Kami menyediakan tautan server staging privat sehingga Anda dapat memantau langsung proses pengerjaan website secara bertahap dari browser Anda.",
+    "tags": "staging server, pantau progress, link demo"
+  },
+  {
+    "id": "DATA-090",
+    "kategori": "alur_pemesanan",
+    "pertanyaan": "Kapan website resmi mulai bisa diakses oleh publik luas?",
+    "jawaban": "Website akan di-deploy ke domain utama segera setelah pembayaran pelunasan terkonfirmasi, proses propagasi DNS global biasanya memakan waktu antara 1 hingga 4 jam.",
+    "tags": "go live, propagasi dns, rilis publik"
+  },
+  {
+    "id": "DATA-091",
+    "kategori": "garansi_support",
+    "pertanyaan": "Apakah ada garansi setelah website selesai diluncurkan?",
+    "jawaban": "Ya, kami memberikan Garansi Bug & Maintenance gratis selama 30 hari penuh sejak tanggal serah terima untuk memastikan tidak ada kesalahan teknis atau link rusak.",
+    "tags": "garansi 30 hari, bebas bug, purna jual"
+  },
+  {
+    "id": "DATA-092",
+    "kategori": "garansi_support",
+    "pertanyaan": "Apa saja yang dicakup dalam garansi 30 hari tersebut?",
+    "jawaban": "Garansi mencakup perbaikan jika ada halaman yang gagal dimuat (error 404/500), form kontak yang tidak terkirim, tombol tidak berfungsi, atau gangguan tampilan di versi browser tertentu.",
+    "tags": "cakupan garansi, perbaikan error, bug fix"
+  },
+  {
+    "id": "DATA-093",
+    "kategori": "garansi_support",
+    "pertanyaan": "Apakah garansi tetap berlaku jika kode website diubah oleh pihak ketiga?",
+    "jawaban": "Garansi akan otomatis gugur jika source code atau konfigurasi database diotak-atik atau diubah oleh developer pihak ketiga di luar koordinasi tim MicroData.",
+    "tags": "ketentuan garansi, void warranty, ubah kode"
+  },
+  {
+    "id": "DATA-094",
+    "kategori": "garansi_support",
+    "pertanyaan": "Apakah MicroData menyediakan layanan pemeliharaan (maintenance) bulanan?",
+    "jawaban": "Ya, kami menyediakan paket Retainer Maintenance bulanan mulai dari Rp250.000/bulan yang mencakup backup mingguan, pembaruan plugin/patch keamanan, dan kuota pembaruan konten minor.",
+    "tags": "maintenance bulanan, paket retainer, kelola website"
+  },
+  {
+    "id": "DATA-095",
+    "kategori": "garansi_support",
+    "pertanyaan": "Bagaimana jika website mengalami kendala atau down di luar jam kerja?",
+    "jawaban": "Sistem monitoring server kami beroperasi 24/7 dan akan mengirimkan peringatan instan ke tim teknis jika terjadi gangguan pada server untuk segera ditangani.",
+    "tags": "monitoring 24 jam, server down, tanggap darurat"
+  },
+  {
+    "id": "DATA-096",
+    "kategori": "garansi_support",
+    "pertanyaan": "Kapan jam operasional layanan Customer Service MicroData?",
+    "jawaban": "Layanan konsultasi dan bantuan Customer Service kami aktif setiap hari Senin hingga Sabtu, mulai pukul 09.00 hingga 18.00 WIB. Pertanyaan pada hari Minggu akan direspons pada hari kerja berikutnya.",
+    "tags": "jam operasional, hari kerja, jam buka cs"
+  },
+  {
+    "id": "DATA-097",
+    "kategori": "garansi_support",
+    "pertanyaan": "Bagaimana cara menghubungi tim teknis MicroData jika butuh bantuan cepat?",
+    "jawaban": "Anda dapat menghubungi tim teknis kami secara langsung melalui WhatsApp resmi di 0812-3456-7890 atau mengirimkan email ke alamat support@microdata.id.",
+    "tags": "kontak darurat, whatsapp teknis, email support"
+  },
+  {
+    "id": "DATA-098",
+    "kategori": "garansi_support",
+    "pertanyaan": "Apakah disediakan panduan atau video tutorial cara mengelola website?",
+    "jawaban": "Ya, setelah serah terima, kami memberikan file panduan PDF ringkas dan rekaman video tutorial singkat yang memandu cara login dan mengganti data pada website Anda.",
+    "tags": "video tutorial, buku panduan, modul cara pakai"
+  },
+  {
+    "id": "DATA-099",
+    "kategori": "garansi_support",
+    "pertanyaan": "Apakah klien bisa berkonsultasi mengenai strategi pengembangan bisnis digital?",
+    "jawaban": "Bisa. Klien berhak atas sesi konsultasi gratis seputar strategi pemasaran digital, pemasangan iklan online, dan optimasi konversi website bersama konsultan MicroData.",
+    "tags": "konsultasi bisnis, digital marketing, scale up"
+  },
+  {
+    "id": "DATA-100",
+    "kategori": "garansi_support",
+    "pertanyaan": "Di mana kantor atau basis operasional MicroData berada?",
+    "jawaban": "MicroData berbasis di Indonesia dan beroperasi secara digital modern (remote-first), melayani pemesanan pembuatan website dan produk digital dari seluruh wilayah Indonesia.",
+    "tags": "lokasi kantor, indonesia, remote first agency"
+  }
+]

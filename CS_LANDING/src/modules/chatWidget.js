@@ -20,29 +20,128 @@ export function initChatWidget() {
 
   let currentSessionId = null;
   let isChatActive = false;
+  let isAnimating = false;
 
   if (!triggerBtn || !modal) return;
 
-  // ── Open / Close Modal Logic ──
-  function openModal() {
-    modal.classList.remove("opacity-0", "pointer-events-none");
-    modal.classList.add("opacity-100");
-    if (modalBox) {
-      modalBox.classList.remove("scale-95");
-      modalBox.classList.add("scale-100");
-    }
-    document.body.classList.add("overflow-hidden");
-    if (messageInput) messageInput.focus();
+  // ── Matched Geometry: Hitung Delta Koordinat Tombol vs Modal ──
+  function calculateGeometryDelta() {
+    const btnRect = triggerBtn.getBoundingClientRect();
+    const modalRect = modalBox.getBoundingClientRect();
+
+    const btnCenterX = btnRect.left + btnRect.width / 2;
+    const btnCenterY = btnRect.top + btnRect.height / 2;
+    const modalCenterX = modalRect.left + modalRect.width / 2;
+    const modalCenterY = modalRect.top + modalRect.height / 2;
+
+    const deltaX = btnCenterX - modalCenterX;
+    const deltaY = btnCenterY - modalCenterY;
+
+    const scaleX = btnRect.width / modalRect.width;
+    const scaleY = btnRect.height / modalRect.height;
+
+    return { deltaX, deltaY, scaleX, scaleY };
   }
 
+  // ── Open Modal (Morphing Out dari Tombol ke Modal) ──
+  function openModal() {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    // 1. Aktifkan modal container secara transparan
+    modal.classList.remove("pointer-events-none", "opacity-0");
+    modal.style.opacity = "0";
+
+    // 2. Hitung geometri awal tombol vs modal
+    modalBox.classList.add("morphing-closed");
+    modalBox.style.transition = "none";
+
+    const { deltaX, deltaY, scaleX, scaleY } = calculateGeometryDelta();
+
+    // 3. Posisi awal modal: menempel persis di atas tombol dengan bentuk kapsul
+    modalBox.style.transform = `translate3d(${deltaX}px, ${deltaY}px, 0) scale(${scaleX}, ${scaleY})`;
+    modalBox.style.borderRadius = "9999px";
+    modalBox.style.opacity = "0.9";
+
+    // Efek fade lembut pada tombol asal
+    triggerBtn.style.transition = "opacity 0.18s ease, transform 0.18s ease";
+    triggerBtn.style.opacity = "0";
+    triggerBtn.style.transform = "scale(0.94)";
+
+    // Force reflow
+    void modalBox.offsetWidth;
+
+    // 4. Jalankan animasi morphing ke ukuran penuh
+    requestAnimationFrame(() => {
+      // Backdrop fade in
+      modal.style.transition = "opacity 0.45s cubic-bezier(0.32, 0.72, 0, 1)";
+      modal.style.opacity = "1";
+
+      // Modal box morphing
+      modalBox.style.transition =
+        "transform 0.5s cubic-bezier(0.32, 0.72, 0, 1), " +
+        "border-radius 0.45s cubic-bezier(0.32, 0.72, 0, 1), " +
+        "opacity 0.25s ease";
+      modalBox.style.transform = "translate3d(0, 0, 0) scale(1, 1)";
+      modalBox.style.borderRadius = "1.5rem";
+      modalBox.style.opacity = "1";
+
+      // Konten teks di dalam modal perlahan muncul
+      setTimeout(() => {
+        modalBox.classList.remove("morphing-closed");
+      }, 120);
+
+      document.body.classList.add("overflow-hidden");
+
+      setTimeout(() => {
+        isAnimating = false;
+        if (messageInput) messageInput.focus();
+      }, 500);
+    });
+  }
+
+  // ── Close Modal (Morphing In: Menciut dan Terhisap Kembali ke Tombol) ──
   function closeModal() {
-    modal.classList.add("opacity-0", "pointer-events-none");
-    modal.classList.remove("opacity-100");
-    if (modalBox) {
-      modalBox.classList.add("scale-95");
-      modalBox.classList.remove("scale-100");
-    }
-    document.body.classList.remove("overflow-hidden");
+    if (isAnimating) return;
+    isAnimating = true;
+
+    // 1. Konten teks di dalam segera memudar agar tidak squished saat menciut
+    modalBox.classList.add("morphing-closed");
+
+    // 2. Hitung posisi tombol saat ini
+    const { deltaX, deltaY, scaleX, scaleY } = calculateGeometryDelta();
+
+    // 3. Jalankan animasi hisap kembali ke koordinat tombol
+    modal.style.transition = "opacity 0.38s cubic-bezier(0.32, 0.72, 0, 1)";
+    modal.style.opacity = "0";
+
+    modalBox.style.transition =
+      "transform 0.44s cubic-bezier(0.32, 0.72, 0, 1), " +
+      "border-radius 0.4s cubic-bezier(0.32, 0.72, 0, 1), " +
+      "opacity 0.36s cubic-bezier(0.32, 0.72, 0, 1)";
+    modalBox.style.transform = `translate3d(${deltaX}px, ${deltaY}px, 0) scale(${scaleX}, ${scaleY})`;
+    modalBox.style.borderRadius = "9999px";
+    modalBox.style.opacity = "0";
+
+    // 4. Setelah animasi selesai, bersihkan state & kembalikan tombol
+    setTimeout(() => {
+      modal.classList.add("pointer-events-none", "opacity-0");
+      modal.style.opacity = "";
+      modal.style.transition = "";
+
+      modalBox.style.transform = "";
+      modalBox.style.borderRadius = "";
+      modalBox.style.transition = "";
+      modalBox.style.opacity = "";
+      modalBox.classList.remove("morphing-closed");
+
+      triggerBtn.style.opacity = "1";
+      triggerBtn.style.transform = "";
+      triggerBtn.style.transition = "";
+
+      document.body.classList.remove("overflow-hidden");
+      isAnimating = false;
+    }, 450);
   }
 
   triggerBtn.addEventListener("click", openModal);

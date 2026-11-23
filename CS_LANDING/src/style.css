@@ -568,3 +568,317 @@
 .animate-fade-in {
   animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* ══════════════════════════════════════════════
+   MATCHED GEOMETRY EFFECT (BUTTON <-> CS WIDGET)
+══════════════════════════════════════════════ */
+.matched-geometry-box {
+  transform-origin: center center;
+  will-change: transform, border-radius, opacity;
+}
+
+.matched-geometry-box .morph-inner {
+  transition: opacity 0.22s cubic-bezier(0.32, 0.72, 0, 1);
+  will-change: opacity;
+}
+
+.matched-geometry-box.morphing-closed .morph-inner {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════════════
+   CENTERPIECE ANIMATED AI GRADIENT ORB (ULTRA SOFT)
+══════════════════════════════════════════════ */
+/* 1. Aura Pendaran Luar yang Sangat Lembut */
+.ai-orb-aura {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgba(251, 146, 60, 0.32) 0%,
+    rgba(253, 186, 116, 0.18) 45%,
+    rgba(254, 215, 170, 0.05) 70%,
+    transparent 85%
+  );
+  filter: blur(50px);
+  animation: orbAuraPulse 9s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+/* 2. Badan Orb Utama: Tepian Halus & Tidak Tajam */
+.ai-center-orb {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  cursor: pointer;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  /* Filter blur di sini yang membuat tepian orb memudar lembut */
+  filter: blur(12px);
+  opacity: 0.88;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation:
+    orbMorphCenter 10s ease-in-out infinite alternate,
+    orbFloatGently 7s ease-in-out infinite alternate;
+}
+
+.ai-center-orb:hover {
+  transform: scale(1.06);
+  opacity: 0.95;
+}
+
+/* 3. Gradien Cairan Oranye-Peach yang Mengalir Halus */
+.ai-orb-plasma {
+  position: absolute;
+  inset: -30%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(249, 115, 22, 0.75) 0deg,
+    rgba(251, 146, 60, 0.8) 80deg,
+    rgba(254, 215, 170, 0.85) 160deg,
+    rgba(245, 158, 11, 0.65) 240deg,
+    rgba(249, 115, 22, 0.75) 360deg
+  );
+  filter: blur(16px);
+  animation: orbSpinPlasma 14s linear infinite;
+}
+
+/* 4. Lapisan Gelombang Kedua (Pemisah Tekstur Cairan Lembut) */
+.ai-orb-wave {
+  position: absolute;
+  inset: -20%;
+  border-radius: 40% 60% 70% 30% / 50% 60% 30% 60%;
+  background: radial-gradient(
+    circle at 40% 40%,
+    rgba(255, 255, 255, 0.65) 0%,
+    rgba(253, 186, 116, 0.4) 40%,
+    rgba(249, 115, 22, 0.3) 70%,
+    transparent 90%
+  );
+  mix-blend-mode: overlay;
+  filter: blur(10px);
+  animation:
+    orbMorphCounter 12s ease-in-out infinite alternate,
+    orbSpinPlasmaReverse 18s linear infinite;
+}
+
+/* 5. Highlight Kaca dibuat Sangat Halus dan Tidak Menonjol */
+.ai-orb-glass-lens {
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  width: 45%;
+  height: 35%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.4) 0%,
+    transparent 70%
+  );
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+/* 6. Bayangan Pendar Bawah yang Menyatu */
+.ai-orb-contact-shadow {
+  width: 100px;
+  height: 12px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(249, 115, 22, 0.22) 0%,
+    rgba(253, 186, 116, 0.08) 50%,
+    transparent 75%
+  );
+  filter: blur(6px);
+  animation: orbShadowBreathe 7s ease-in-out infinite alternate;
+}
+
+/* ── Keyframes (Dibuat Lebih Lambat & Mengalir Tenang) ── */
+@keyframes orbMorphCenter {
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  33% {
+    border-radius: 40% 60% 70% 30% / 50% 60% 30% 60%;
+  }
+  66% {
+    border-radius: 70% 30% 50% 50% / 30% 40% 60% 70%;
+  }
+  100% {
+    border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+  }
+}
+
+@keyframes orbMorphCounter {
+  0% {
+    border-radius: 40% 60% 70% 30% / 50% 60% 30% 60%;
+  }
+  50% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  100% {
+    border-radius: 50% 50% 60% 40% / 40% 60% 40% 60%;
+  }
+}
+
+@keyframes orbSpinPlasma {
+  from {
+    transform: rotate(0deg) scale(1.1);
+  }
+  to {
+    transform: rotate(360deg) scale(1.1);
+  }
+}
+
+@keyframes orbSpinPlasmaReverse {
+  from {
+    transform: rotate(360deg) scale(1.05);
+  }
+  to {
+    transform: rotate(0deg) scale(1.05);
+  }
+}
+
+@keyframes orbFloatGently {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes orbAuraPulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.08);
+    opacity: 0.95;
+  }
+}
+
+@keyframes orbShadowBreathe {
+  0% {
+    transform: scaleX(0.92);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scaleX(1.1);
+    opacity: 0.9;
+  }
+}
+
+/* ══════════════════════════════════════════════
+   EFEK KACA BENING KRISTAL (CRYSTAL GLASSMORPHISM)
+══════════════════════════════════════════════ */
+.glass-card-crystal {
+  /* Gradien kilau kaca diagonal */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.14) 0%,
+    rgba(255, 255, 255, 0.04) 50%,
+    rgba(255, 255, 255, 0.01) 100%
+  ) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  /* Garis bevel putih di atas + bayangan kedalaman */
+  box-shadow:
+    0 12px 32px 0 rgba(0, 0, 0, 0.4),
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.45),
+    inset 0 0 16px 0 rgba(255, 255, 255, 0.03) !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Saat Kursor Mendekat: Kaca Memantul Terang & Melayang */
+.glass-card-crystal:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.24) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.03) 100%
+  ) !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+  box-shadow:
+    0 18px 45px 0 rgba(0, 0, 0, 0.5),
+    0 0 25px 0 rgba(249, 115, 22, 0.2),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.7) !important;
+  transform: translateY(-3px) !important;
+}
+
+.glass-input-crystal {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.04) 50%,
+    rgba(255, 255, 255, 0.01) 100%
+  ) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow:
+    0 12px 32px 0 rgba(0, 0, 0, 0.4),
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.4),
+    inset 0 0 16px 0 rgba(255, 255, 255, 0.02) !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+/* Saat Pengguna Mengklik/Mengetik di Dalam Form (Fokus) */
+.glass-input-crystal:focus-within {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.02) 100%
+  ) !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+  box-shadow:
+    0 16px 40px 0 rgba(0, 0, 0, 0.5),
+    0 0 25px 0 rgba(249, 115, 22, 0.25),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.6) !important;
+}
+
+/* ================================================
+   CRYSTAL GLASS BUTTON � SOFT ORANGE TINT
+   ================================================ */
+.glass-btn-crystal {
+  background: linear-gradient(
+    135deg,
+    rgba(249, 115, 22, 0.35) 0%,
+    rgba(234, 88, 12, 0.18) 50%,
+    rgba(249, 115, 22, 0.10) 100%
+  ) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(249, 115, 22, 0.45) !important;
+  box-shadow:
+    0 4px 16px 0 rgba(249, 115, 22, 0.25),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 0 10px 0 rgba(249, 115, 22, 0.08) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.glass-btn-crystal:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(249, 115, 22, 0.55) 0%,
+    rgba(234, 88, 12, 0.30) 50%,
+    rgba(249, 115, 22, 0.18) 100%
+  ) !important;
+  border-color: rgba(249, 115, 22, 0.75) !important;
+  box-shadow:
+    0 8px 24px 0 rgba(249, 115, 22, 0.40),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.50),
+    inset 0 0 12px 0 rgba(249, 115, 22, 0.12) !important;
+  transform: translateY(-1px) !important;
+}
+.glass-btn-crystal:active {
+  transform: scale(0.96) translateY(0) !important;
+  box-shadow:
+    0 2px 8px 0 rgba(249, 115, 22, 0.20),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.25) !important;
+}

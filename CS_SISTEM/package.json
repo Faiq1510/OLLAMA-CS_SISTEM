@@ -5,6 +5,7 @@
   "main": "tes-alur.js",
   "scripts": {
     "start": "node src/server.js",
+    "seed": "node scripts/seed-db.js",
     "test": "jest --verbose --forceExit"
   },
   "keywords": [],

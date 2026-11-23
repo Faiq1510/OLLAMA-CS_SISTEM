@@ -33,7 +33,7 @@ async function handleChat(req, res) {
     const session = getOrCreateSession(sessionId);
 
     // 3. Ambil System Prompt FAQ
-    const systemPrompt = getSystemPrompt();
+    const systemPrompt = await getSystemPrompt(cleanMessage);
 
     // 4. Susun Pesan Khusus Sesi Pengguna Ini Saja
     const messages = [

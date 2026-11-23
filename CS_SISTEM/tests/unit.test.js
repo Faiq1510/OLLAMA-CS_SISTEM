@@ -66,8 +66,8 @@ describe("S1. Unit Testing: Session Service", () => {
 });
 
 describe("🧪 2. Unit Testing: FAQ Service", () => {
-  it("Harus berhasil merakit System Prompt dengan guardrail anti-halusinasi", () => {
-    const prompt = getSystemPrompt();
+  it("Harus berhasil merakit System Prompt dengan guardrail anti-halusinasi", async () => {
+    const prompt = await getSystemPrompt();
 
     expect(typeof prompt).toBe("string");
     // Memastikan kata kunci guardrail ada di dalam system prompt

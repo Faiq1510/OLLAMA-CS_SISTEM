@@ -290,7 +290,7 @@
                 class="w-full aspect-[16/10] rounded-[18px] overflow-hidden bg-black border border-white/5 shadow-inner"
               >
                 <img
-                  src="2.png"
+                  src="/2.png"
                   alt="Business AI & Cloud ERP"
                   class="w-full h-full object-cover"
                 />
@@ -321,7 +321,7 @@
                 class="w-full aspect-[16/10] rounded-[22px] overflow-hidden bg-black/90 border border-white/10 shadow-2xl relative"
               >
                 <img
-                  src="5.png"
+                  src="/5.png"
                   alt="Fintech SaaS Suite"
                   class="w-full h-full object-cover brightness-95 contrast-105"
                 />
@@ -359,7 +359,7 @@
                 class="w-full aspect-[16/10] rounded-[18px] overflow-hidden bg-black border border-teal-500/20 shadow-inner"
               >
                 <img
-                  src="1.png"
+                  src="/(1).png"
                   alt="Network Status Cloud"
                   class="w-full h-full object-cover"
                 />
@@ -970,228 +970,6 @@
         </div>
       </section>
     </main>
-
-    <!-- ══════════════════════════════════════════════
-         MODAL WIDGET CS AI (LEBUR DARI CS_WIDGET)
-    ══════════════════════════════════════════════ -->
-    <div
-      id="aiChatModal"
-      class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-900/40 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"
-      aria-hidden="true"
-    >
-      <!-- Backdrop Click Area -->
-      <div id="aiChatBackdrop" class="absolute inset-0"></div>
-
-      <!-- Container Dialog -->
-      <div
-        id="aiChatBox"
-        class="relative w-full max-w-4xl h-[88vh] bg-canvas-pattern rounded-3xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col z-10 transform scale-95 transition-transform duration-300"
-      >
-        <!-- Modal Top Header -->
-        <div
-          class="w-full bg-white/80 backdrop-blur-md border-b border-slate-100 px-4 sm:px-6 h-14 flex items-center justify-between shrink-0"
-        >
-          <div class="flex items-center gap-3">
-            <div
-              class="relative w-8 h-8 rounded-full bg-blue-50 border border-slate-200 flex items-center justify-center overflow-hidden"
-            >
-              <img
-                src="/avatar.png"
-                alt="Mascot Icon"
-                class="w-full h-full object-cover"
-              />
-              <span
-                class="absolute bottom-0 right-0 w-2 h-2 bg-emerald-500 border border-white rounded-full"
-              ></span>
-            </div>
-            <div class="flex items-center gap-2">
-              <span class="text-slate-900 font-semibold text-sm"
-                >MicroData Assistant</span
-              >
-              <span
-                class="px-2 py-0.5 text-[10px] font-medium text-blue-600 bg-blue-50 rounded-full inline-flex items-center gap-1"
-              >
-                <span
-                  class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"
-                ></span>
-                AI Support
-              </span>
-            </div>
-          </div>
-          <button
-            id="closeAiChatBtn"
-            type="button"
-            class="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-slate-800 hover:bg-slate-100 transition cursor-pointer text-sm font-bold"
-            title="Tutup dialog"
-          >
-            ✕
-          </button>
-        </div>
-
-        <!-- Chat Viewport Scrollable Area -->
-        <div
-          id="chatScroll"
-          class="flex-1 overflow-y-auto px-4 py-6 flex flex-col items-center justify-between"
-          style="scrollbar-width: thin"
-        >
-          <!-- HERO STATE: Sambutan & Rekomendasi Kartu -->
-          <div id="heroState" class="w-full max-w-2xl mx-auto my-auto py-4">
-            <!-- Maskot Robot Animasi -->
-            <div
-              class="pop-stagger-item delay-b2t-mascot animate-stagger-active text-center"
-              id="mascotWrapper"
-            >
-              <div
-                class="relative flex items-center justify-center mb-2 mx-auto cursor-pointer select-none"
-                id="mascotElement"
-                title="Klik maskot!"
-              >
-                <div class="animate-float" id="mascotFloatInner">
-                  <img
-                    src="/avatar.png"
-                    alt="AI Mascot"
-                    class="w-52 max-w-full h-auto object-contain drop-shadow-md hover:scale-105 active:scale-95 transition-transform"
-                  />
-                </div>
-              </div>
-              <div
-                class="flex justify-center items-center -mt-4 mb-4 pointer-events-none select-none"
-              >
-                <div
-                  class="animate-float-shadow"
-                  style="
-                    width: 120px;
-                    height: 12px;
-                    background: radial-gradient(
-                      ellipse at center,
-                      rgba(100, 116, 139, 0.3) 0%,
-                      rgba(148, 163, 184, 0.1) 50%,
-                      rgba(226, 232, 240, 0) 75%
-                    );
-                    filter: blur(3px);
-                  "
-                ></div>
-              </div>
-            </div>
-
-            <!-- Teks Sapaan -->
-            <div
-              class="pop-stagger-item delay-b2t-greeting animate-stagger-active text-center mb-6"
-              id="greetingWrapper"
-            >
-              <h2
-                class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-1"
-              >
-                Hi, there!
-              </h2>
-              <p class="text-slate-500 text-xs sm:text-sm">
-                Ada yang bisa kami bantu seputar jasa pembuatan website &amp;
-                produk digital?
-              </p>
-            </div>
-
-            <!-- Kartu Rekomendasi Pertanyaan Cepat -->
-            <div
-              class="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full"
-              id="cardsGridSection"
-            >
-              <div
-                data-prompt="Apa saja jenis website yang bisa dibuat dan berapa harganya?"
-                class="suggestion-card pop-stagger-item delay-b2t-card1 animate-stagger-active bg-white border border-slate-200/90 hover:border-blue-400 hover:ring-2 hover:ring-blue-100 rounded-2xl p-4 shadow-2xs hover:shadow-md transition-all cursor-pointer flex flex-col justify-between"
-              >
-                <div class="font-semibold text-slate-800 text-xs mb-1">
-                  Paket Layanan Web
-                </div>
-                <div class="text-[11px] text-slate-500 line-clamp-2">
-                  Cek estimasi biaya Landing Page hingga Custom Web.
-                </div>
-                <div
-                  class="mt-3 text-[11px] font-medium text-blue-600 flex items-center justify-between"
-                >
-                  <span>Lihat paket</span>
-                  <span>→</span>
-                </div>
-              </div>
-
-              <div
-                data-prompt="Berapa lama proses pengerjaan pembuatan website dan bagaimana ketentuan revisinya?"
-                class="suggestion-card pop-stagger-item delay-b2t-card2 animate-stagger-active bg-white border border-slate-200/90 hover:border-purple-400 hover:ring-2 hover:ring-purple-100 rounded-2xl p-4 shadow-2xs hover:shadow-md transition-all cursor-pointer flex flex-col justify-between"
-              >
-                <div class="font-semibold text-slate-800 text-xs mb-1">
-                  Estimasi &amp; Revisi
-                </div>
-                <div class="text-[11px] text-slate-500 line-clamp-2">
-                  Lama pengerjaan dan batas revisi yang diberikan.
-                </div>
-                <div
-                  class="mt-3 text-[11px] font-medium text-purple-600 flex items-center justify-between"
-                >
-                  <span>Lihat timeline</span>
-                  <span>→</span>
-                </div>
-              </div>
-
-              <div
-                data-prompt="Bagaimana alur dan syarat pemesanan website di WebStudio?"
-                class="suggestion-card pop-stagger-item delay-b2t-card3 animate-stagger-active bg-white border border-slate-200/90 hover:border-orange-400 hover:ring-2 hover:ring-orange-100 rounded-2xl p-4 shadow-2xs hover:shadow-md transition-all cursor-pointer flex flex-col justify-between"
-              >
-                <div class="font-semibold text-slate-800 text-xs mb-1">
-                  Alur Pemesanan
-                </div>
-                <div class="text-[11px] text-slate-500 line-clamp-2">
-                  Tahapan DP 50%, pengerjaan, hingga pelunasan.
-                </div>
-                <div
-                  class="mt-3 text-[11px] font-medium text-orange-600 flex items-center justify-between"
-                >
-                  <span>Alur order</span>
-                  <span>→</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- CHAT STATE: Daftar Pesan Gelembung -->
-          <div
-            id="chatState"
-            class="hidden w-full max-w-2xl space-y-4 py-4 mb-auto"
-          >
-            <div id="messagesList" class="space-y-4"></div>
-          </div>
-
-          <!-- INPUT FORM -->
-          <div
-            class="w-full max-w-2xl mt-4 shrink-0 pop-stagger-item delay-b2t-input animate-stagger-active"
-          >
-            <form
-              id="chatForm"
-              class="bg-white border border-slate-200/90 rounded-2xl shadow-xs focus-within:ring-2 focus-within:ring-blue-100 focus-within:border-blue-400 p-2.5 flex flex-col justify-between min-h-[85px] transition-all"
-            >
-              <textarea
-                id="messageInput"
-                rows="1"
-                placeholder="Tanyakan apapun seputar pembuatan website..."
-                class="w-full resize-none border-0 p-1.5 text-slate-800 placeholder-slate-400 text-xs sm:text-sm focus:ring-0 focus:outline-none bg-transparent"
-              ></textarea>
-              <div class="flex justify-between items-center pt-1.5">
-                <span class="text-[10px] text-slate-400"
-                  >Tekan Enter untuk kirim</span
-                >
-                <button
-                  id="sendBtn"
-                  type="submit"
-                  class="inline-flex items-center gap-1.5 bg-slate-900 hover:bg-slate-800 active:scale-95 text-white text-xs font-medium px-3.5 py-1.5 rounded-xl transition cursor-pointer"
-                >
-                  <span>Kirim</span>
-                  <span>→</span>
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
