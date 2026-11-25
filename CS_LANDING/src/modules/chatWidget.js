@@ -289,7 +289,9 @@ export function initChatWidget() {
         currentSessionId = data.sessionId;
         appendBotMessage(data.answer);
       } else {
-        appendBotMessage("Maaf, terjadi kendala saat memproses respons.");
+        appendBotMessage(
+          data.error || "Maaf, terjadi kendala saat memproses respons.",
+        );
       }
     } catch (error) {
       removeTypingIndicator(typingId);

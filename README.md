@@ -155,19 +155,26 @@ Content-Type: application/json
 **Response (200 OK):**
 ```json
 {
-  "status": "success",
-  "reply": "Garansi yang diberikan setelah website jadi dari MicroData mencakup perbaikan bug dan error selama 30 hari penuh sejak tanggal serah terima.",
-  "sessionId": "session-1732336000000",
-  "sourceCount": 3
+  "answer": "Garansi mencakup perbaikan bug dan error selama 30 hari sejak tanggal serah terima.",
+  "sessionId": "4ed49377-78b8-4423-a602-9fc73c7e15be"
 }
 ```
 
 **Response Error (429 Too Many Requests):**
 ```json
 {
-  "error": "Terlalu banyak permintaan pesan. Silakan tunggu 1 menit sebelum mengirim pesan kembali."
+  "error": "Terlalu banyak permintaan chat. Harap tunggu 1 menit sebelum mencoba kembali."
 }
 ```
+
+**Response Error (503 Service Unavailable):**
+```json
+{
+  "error": "Basis pengetahuan (PostgreSQL) sedang tidak tersedia. Pastikan database sudah berjalan."
+}
+```
+
+Jika Ollama tidak tersedia, endpoint juga mengembalikan status `503` dengan pesan bahwa layanan AI sedang offline. Sistem tidak meneruskan chat ke Ollama jika PostgreSQL tidak dapat menyediakan basis pengetahuan.
 
 ---
 

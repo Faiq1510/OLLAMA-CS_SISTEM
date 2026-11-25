@@ -4,6 +4,11 @@
 const request = require("supertest");
 const app = require("../src/server");
 
+jest.mock("../src/services/faqservice", () => ({
+  getSystemPrompt: jest.fn().mockResolvedValue("FAQ test"),
+}));
+const { getSystemPrompt } = require("../src/services/faqservice");
+
 // 1. Mocking ollamaservice agar tidak memanggil Ollama sungguhan saat testing
 jest.mock("../src/services/ollamaservice", () => ({
   chat: jest
@@ -22,6 +27,19 @@ describe("🧪 3. Integration & Limit Testing: REST API /api/chat", () => {
     expect(res.body).toHaveProperty("answer");
     expect(res.body).toHaveProperty("sessionId");
     expect(typeof res.body.sessionId).toBe("string");
+  });
+
+  it("Harus mengembalikan 503 jika basis pengetahuan tidak dapat diakses", async () => {
+    getSystemPrompt.mockRejectedValueOnce(
+      Object.assign(new Error("Database offline"), { code: "ECONNREFUSED" }),
+    );
+
+    const res = await request(app)
+      .post("/api/chat")
+      .send({ message: "Berapa harga website?" });
+
+    expect(res.statusCode).toBe(503);
+    expect(res.body.error).toContain("PostgreSQL");
   });
 
   // ─── PENGUJIAN 2: VALIDASI INPUT (400 BAD REQUEST) ────────────────────────
