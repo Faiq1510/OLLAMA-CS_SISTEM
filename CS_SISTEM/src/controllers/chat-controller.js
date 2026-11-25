@@ -66,6 +66,17 @@ async function handleChat(req, res) {
       });
     }
 
+    if (
+      ["ECONNREFUSED", "ETIMEDOUT", "ENOTFOUND", "EHOSTUNREACH"].includes(
+        error.code
+      )
+    ) {
+      return res.status(503).json({
+        error:
+          "Basis pengetahuan (PostgreSQL) sedang tidak tersedia. Pastikan database sudah berjalan.",
+      });
+    }
+
     return res.status(500).json({
       error: "Terjadi kesalahan pada server saat memproses pertanyaan Anda.",
     });

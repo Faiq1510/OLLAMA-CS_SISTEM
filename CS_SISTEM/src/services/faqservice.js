@@ -22,66 +22,61 @@ const STOPWORDS = new Set([
 async function getSystemPrompt(userMessage = "") {
   let faqs = [];
 
-  try {
-    // 1. Ekstrak kata kunci — buang stopwords dan kata pendek
-    const cleanWords = userMessage
-      .toLowerCase()
-      .replace(/[^a-zA-Z0-9\s]/g, "")
-      .split(/\s+/)
-      .filter((word) => word.length > 2 && !STOPWORDS.has(word));
+  // 1. Ekstrak kata kunci — buang stopwords dan kata pendek
+  const cleanWords = userMessage
+    .toLowerCase()
+    .replace(/[^a-zA-Z0-9\s]/g, "")
+    .split(/\s+/)
+    .filter((word) => word.length > 2 && !STOPWORDS.has(word));
 
-    console.log(`[FAQ] Keywords setelah filter: ${cleanWords.join(", ") || "(kosong)"}`);
+  console.log(`[FAQ] Keywords setelah filter: ${cleanWords.join(", ") || "(kosong)"}`);
 
-    if (cleanWords.length > 0) {
-      // 2. Susun kondisi WHERE
-      const whereClauses = cleanWords
-        .map(
-          (_, i) =>
-            `(pertanyaan ILIKE $${i + 1} OR tags ILIKE $${i + 1} OR kategori ILIKE $${i + 1})`
-        )
-        .join(" OR ");
+  if (cleanWords.length > 0) {
+    // 2. Susun kondisi WHERE
+    const whereClauses = cleanWords
+      .map(
+        (_, i) =>
+          `(pertanyaan ILIKE $${i + 1} OR tags ILIKE $${i + 1} OR kategori ILIKE $${i + 1})`
+      )
+      .join(" OR ");
 
-      // 3. Susun skor relevansi — baris yang cocok dengan lebih banyak keyword
-      //    mendapat skor lebih tinggi dan muncul di atas
-      const scoreParts = cleanWords
-        .map(
-          (_, i) =>
-            `(CASE WHEN pertanyaan ILIKE $${i + 1} THEN 2 ELSE 0 END) +
-             (CASE WHEN tags ILIKE $${i + 1} THEN 1 ELSE 0 END) +
-             (CASE WHEN kategori ILIKE $${i + 1} THEN 1 ELSE 0 END)`
-        )
-        .join(" + ");
+    // 3. Susun skor relevansi — baris yang cocok dengan lebih banyak keyword
+    //    mendapat skor lebih tinggi dan muncul di atas
+    const scoreParts = cleanWords
+      .map(
+        (_, i) =>
+          `(CASE WHEN pertanyaan ILIKE $${i + 1} THEN 2 ELSE 0 END) +
+           (CASE WHEN tags ILIKE $${i + 1} THEN 1 ELSE 0 END) +
+           (CASE WHEN kategori ILIKE $${i + 1} THEN 1 ELSE 0 END)`
+      )
+      .join(" + ");
 
-      const params = cleanWords.map((word) => `%${word}%`);
+    const params = cleanWords.map((word) => `%${word}%`);
 
-      const searchResult = await query(
-        `SELECT id, kategori, pertanyaan, jawaban,
-                (${scoreParts}) AS skor
-         FROM faqs
-         WHERE ${whereClauses}
-         ORDER BY skor DESC
-         LIMIT 12`,
-        params
-      );
+    const searchResult = await query(
+      `SELECT id, kategori, pertanyaan, jawaban,
+              (${scoreParts}) AS skor
+       FROM faqs
+       WHERE ${whereClauses}
+       ORDER BY skor DESC
+       LIMIT 12`,
+      params
+    );
 
-      faqs = searchResult.rows;
-      console.log(`[FAQ] Hasil pencarian: ${faqs.length} baris`);
-      if (faqs.length > 0) {
-        console.log(`[FAQ] Top result: [${faqs[0].id}] skor=${faqs[0].skor} — ${faqs[0].pertanyaan.substring(0, 60)}`);
-      }
+    faqs = searchResult.rows;
+    console.log(`[FAQ] Hasil pencarian: ${faqs.length} baris`);
+    if (faqs.length > 0) {
+      console.log(`[FAQ] Top result: [${faqs[0].id}] skor=${faqs[0].skor} — ${faqs[0].pertanyaan.substring(0, 60)}`);
     }
+  }
 
-    // 4. Jika tidak ada kecocokan, ambil 15 FAQ inti sebagai default
-    if (faqs.length === 0) {
-      console.log("[FAQ] Tidak ada hasil — menggunakan default 15 FAQ");
-      const defaultResult = await query(
-        "SELECT id, kategori, pertanyaan, jawaban FROM faqs ORDER BY id ASC LIMIT 15"
-      );
-      faqs = defaultResult.rows;
-    }
-  } catch (error) {
-    console.error("[FAQ Service Database Error DETAIL]:", error);
-    faqs = [];
+  // 4. Jika tidak ada kecocokan, ambil 15 FAQ inti sebagai default
+  if (faqs.length === 0) {
+    console.log("[FAQ] Tidak ada hasil — menggunakan default 15 FAQ");
+    const defaultResult = await query(
+      "SELECT id, kategori, pertanyaan, jawaban FROM faqs ORDER BY id ASC LIMIT 15"
+    );
+    faqs = defaultResult.rows;
   }
 
   // 5. Susun daftar FAQ ke teks konteks

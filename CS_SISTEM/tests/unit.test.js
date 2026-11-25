@@ -6,7 +6,17 @@ const {
   appendToSession,
   clearSession,
 } = require("../src/services/sessionService");
+
+jest.mock("../src/config/db", () => ({
+  query: jest.fn(),
+}));
+
+const { query } = require("../src/config/db");
 const { getSystemPrompt } = require("../src/services/faqservice");
+
+beforeEach(() => {
+  query.mockResolvedValue({ rows: [] });
+});
 
 describe("S1. Unit Testing: Session Service", () => {
   let createdSessionId = null;
@@ -73,6 +83,16 @@ describe("🧪 2. Unit Testing: FAQ Service", () => {
     // Memastikan kata kunci guardrail ada di dalam system prompt
     expect(prompt).toContain("Customer Service");
     expect(prompt).toContain("0812-3456-7890");
-    expect(prompt).toContain("BASIS PENGETAHUAN RESMI WEBSTUDIO");
+    expect(prompt).toContain("BASIS PENGETAHUAN RESMI MICRODATA");
+  });
+
+  it("Harus meneruskan kegagalan database agar chat tidak berjalan tanpa knowledge base", async () => {
+    query.mockRejectedValueOnce(Object.assign(new Error("Database offline"), {
+      code: "ECONNREFUSED",
+    }));
+
+    await expect(getSystemPrompt("layanan website")).rejects.toMatchObject({
+      code: "ECONNREFUSED",
+    });
   });
 });
